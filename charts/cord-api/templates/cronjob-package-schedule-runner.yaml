@@ -1,0 +1,47 @@
+{{- if .Values.packageScheduleRunner.enabled }}
+{{- $labels := include "cord-api.labels" . -}}
+{{- $args := .Values.packageScheduleRunnerArgs -}}
+apiVersion: batch/v1
+kind: CronJobList
+items:
+  {{- range $schedule := .Values.packageScheduleRunner.frequencies }}
+  {{- $name := printf "%s-%s-pkg-runner" (include "cord-api.fullname" $) $schedule.frequency | trunc 52 }}
+  {{- $selectorName := printf "%s-%s-pkg-runner" (include "cord-api.name" $) $schedule.frequency | trunc 52 }}
+  - apiVersion: batch/v1
+    kind: CronJob
+    metadata:
+      name: {{ $name }}
+      labels:
+        {{- $labels | nindent 8 }}
+    spec:
+      schedule: {{ $schedule.schedule }}
+      concurrencyPolicy: Forbid
+      successfulJobsHistoryLimit: 3
+      failedJobsHistoryLimit: 3
+      jobTemplate:
+        spec:
+          template:
+            metadata:
+              labels:
+                app.kubernetes.io/name: {{ $selectorName }}
+                app.kubernetes.io/instance: {{ $.Release.Name }}
+              annotations:
+                checksum/config: {{ include (print $.Template.BasePath "/secret.yaml") $ | sha256sum }}
+            spec:
+              restartPolicy: Never
+              {{- with $.Values.imagePullSecrets }}
+              imagePullSecrets:
+                {{- toYaml . | nindent 16 }}
+              {{- end }}
+              containers:
+                - name: {{ printf "%s-%s-pkg-runner" $.Chart.Name $schedule.frequency | trunc 52 }}
+                  image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag | default $.Chart.AppVersion }}"
+                  imagePullPolicy: {{ $.Values.image.pullPolicy }}
+                  args:
+                    {{- tpl $args (dict "schedule" $schedule "Template" $.Template "Values" $.Values) | nindent 20 }}
+                  command:
+                    - /bin/bash
+                    - -c
+                  {{- include "cord-api.envVars" $ | nindent 18 }}
+  {{- end }}
+{{- end }}

@@ -1,0 +1,39 @@
+{{- if .Values.backupCleaner.enabled }}
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ include "cord-api.fullname" . }}-backup-cleaner
+  labels:
+    {{- include "cord-api.labels" . | nindent 4 }}
+spec:
+  schedule: {{ .Values.backupCleaner.schedule }}
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+          {{- include "cord-api.selectorLabels" . | nindent 12 }}
+          annotations:
+            checksum/config: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
+        spec:
+          restartPolicy: Never
+          {{- with .Values.imagePullSecrets }}
+          imagePullSecrets:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          containers:
+            - name: {{ .Chart.Name }}
+              securityContext:
+              {{- toYaml .Values.securityContext | nindent 16 }}
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              args:
+                {{- tpl .Values.backupCleanerArgs . | nindent 16 }}
+              command:
+                - /bin/bash
+                - -c
+              {{- include "cord-api.envVars" . | nindent 14 }}
+{{- end }}
