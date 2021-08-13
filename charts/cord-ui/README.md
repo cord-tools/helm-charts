@@ -48,7 +48,7 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | config.gitlabCallbackUri | string | `"https://cord.local/gitlab/callback"` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"public.ecr.aws/o1g8a1m8/ui"` |  |
+| image.repository | string | `"public.ecr.aws/o1g8a1m8/cord-ui"` |  |
 | image.tag | string | `""` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
