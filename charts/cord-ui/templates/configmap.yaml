@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "cord-ui.fullname" . }}
+  labels:
+    {{- include "cord-ui.labels" . | nindent 4 }}
+data:
+  config.json: |-
+    {
+      "authentication": {
+        "baseUrl": {{ .Values.config.authenticationBaseUrl | default "" | quote }},
+        "clientId": {{ .Values.config.authenticationClientId | default "" | quote }},
+        "accessTokenUri": {{ .Values.config.authenticationAccessTokenUri | default "" | quote }},
+        "authorizationUri": {{ .Values.config.authenticationAuthorizationUri | default "" | quote }},
+        "redirectUri": {{ .Values.config.authenticationRedirectUri | default "" | quote }}
+      },
+      "gitlab": {
+        "baseUrl": {{ .Values.config.gitlabBaseUrl | default "" | quote }},
+        "apiUrl": {{ .Values.config.gitlabApiUrl | default "" | quote }},
+        "appId": {{ .Values.config.gitlabAppId | default "" | quote }},
+        "callbackUri": {{ .Values.config.gitlabCallbackUri | default "" | quote }}
+      },
+      "github": {
+        "apiUrl": {{ .Values.config.githubApiUrl | default "" | quote }},
+        "authUrl": {{ .Values.config.githubAuthUrl | default "" | quote }},
+        "clientId": {{ .Values.config.githubClientId | default "" | quote }},
+        "redirectUri": {{ .Values.config.githubRedirectUri | default "" | quote }}
+      },
+      "bitbucket": {
+        "baseUrl": {{ .Values.config.bitbucketBaseUrl | default "" | quote }},
+        "authUrl": {{ .Values.config.bitbucketAuthUrl | default "" | quote }},
+        "apiUrl": {{ .Values.config.bitbucketApiUrl | default "" | quote }},
+        "clientId": {{ .Values.config.bitbucketClientId | default "" | quote }},
+        "callbackUri": {{ .Values.config.bitbucketCallbackUri | default "" | quote }}
+      },
+      "apiBaseUrl": {{ .Values.config.apiBaseUrl | default "" | quote }},
+      "helpLinkUrl": {{ .Values.config.helpLinkUrl | default "https://help.cord.tools" | quote }},
+      "environmentUrlSuffix": {{ .Values.config.environmentUrlSuffix | default "" | quote }}
+    }
+

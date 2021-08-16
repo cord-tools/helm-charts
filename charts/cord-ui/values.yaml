@@ -1,0 +1,116 @@
+# Default values for cord-ui.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: public.ecr.aws/o1g8a1m8/cord-ui
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+config:
+  # URL to the cord API
+  apiBaseUrl: "https://cord.local"
+
+  # Domain suffix to reach environments. <env-name>--<instance-type>--<account>.cord.local
+  environmentUrlSuffix: "cord.local"
+
+  # URL to the auth server (cord-api-v2)
+  authenticationBaseUrl: "https://cord.local"
+  # authenticationClientId is generated in Cord API v2
+  authenticationClientId: ""
+  authenticationAccessTokenUri: "https://cord.local/oauth/token"
+  authenticationAuthorizationUri: "https://cord.local/oauth/authorize"
+  authenticationRedirectUri: "https://cord.local/login"
+
+  # Gitlab
+  gitlabBaseUrl: "https://gitlab.com"
+  gitlabApiUrl: "https://gitlab.com/oauth/authorize"
+  gitlabAppId: ""
+  gitlabCallbackUri: "https://cord.local/gitlab/callback"
+
+  # Github
+  githubBaseUrl: "https://github.com"
+  githubApiUrl: "https://api.github.com"
+  githubAuthUrl: ""
+  githubClientId: ""
+  githubRedirectUri: "https://cord.local/github/callback"
+
+  # Bitbucket
+  bitbucketBaseUrl: "https://bitbucket.org"
+  bitbucketAuthUrl: "https://bitbucket.org/site/oauth2/authorize"
+  bitbucketApiUrl: "https://api.bitbucket.org/2.0"
+  bitbucketClientId: ""
+  bitbucketCallbackUri: "https://cord.local/bitbucket/callback"
+
+metrics:
+  enabled: false
+  image:
+    repository: nginx/nginx-prometheus-exporter
+    tag: 0.8.0
+    pullPolicy: IfNotPresent
+
+serviceMonitor:
+  enabled: false
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: cord.local
+      paths:
+        - path: /
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #  cpu: 100m
+  #  memory: 128Mi
+  # requests:
+  #  cpu: 100m
+  #  memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
