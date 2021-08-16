@@ -1,0 +1,158 @@
+# Default values for cord-api-v2.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: public.ecr.aws/o1g8a1m8/cord-api-v2
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+# User for calls to the internal server on cord-api
+internalAPIUser: "internaluser"
+# Password for calls to the internal server on cord-api
+internalAPIPass: "changeme"
+
+config:
+  RAILS_ENV: "production"
+
+  # Host where the app is accessible from
+  APP_HOST: "cordtools.local"
+
+  # From setting for all emails sent
+  APP_FROM_EMAIL: "Cord Tools <support@cord.tools>"
+
+  # AWS Region if using SES to send emails (the default)
+  AWS_REGION: ""
+
+  # SMTP settings
+  # SMTP_HOST: ""
+  # SMTP_PORT: ""
+  # SMTP_OPENSSL_VERIFY: ""
+
+  # Host where assets are hosted
+  APP_ASSET_HOST: "https://cordtools.local"
+
+  # Public URL for docker registry for AEM images
+  DOCKER_REGISTRY_ENDPOINT: "https://registry.cordtools.local"
+
+  # Google OAuth client id for sign in via Google
+  # GOOGLE_OAUTH_CLIENT_ID: ""
+
+  # AWS Cognito details for sign in via AWS Cognito
+  # COGNITO_CLIENT_ID: ""
+  # COGNITO_USER_POOL_SITE: ""
+  # COGNITO_USER_POOL_ID: ""
+
+  # Azure AD details for sign in via Azure
+  # See https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-protocols
+  # AZURE_CLIENT_ID: ""
+
+  # Make OAuth applications require SSL
+  OAUTH_APPLICATIONS_REQUIRE_SSL: "true"
+
+secrets:
+  # SMTP Settings
+  # SMTP_USERNAME: ""
+  # SMTP_PASSWORD: ""
+
+  # Google OAuth secret for sign in via Google
+  # GOOGLE_OAUTH_SECRET: ""
+
+  # AWS Cognito secret for sign in via AWS Cognito
+  # COGNITO_CLIENT_SECRET: ""
+
+  # Azure AD secret for sign in via Azure AD
+  # See https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-protocols
+  # AZURE_CLIENT_SECRET: ""
+
+  # Private key to sign JWTs with
+  # can be generated with: ssh-keygen -t rsa -b 4096 -f key-name.key
+  JWT_SIGNING_KEY: "changeme"
+
+  # 64 character random string
+  SECRET_KEY_BASE: "changeme"
+
+metrics:
+  enabled: false
+
+serviceMonitor:
+  enabled: false
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  path: /
+  hosts:
+    - host: cordtools.local
+      paths:
+        - path: /api/v2/
+        - path: /users
+        - path: /oauth/
+        - path: /.well-known/
+        - path: /assets/
+        - path: /auth/
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+resources: {}
+  #  cpu: 100m
+  #  memory: 128Mi
+  # requests:
+  #  cpu: 100m
+  #  memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+postgresql:
+  enabled: true
+  postgresqlDatabase: cordtools
+  postgresqlUsername: cordtools
+  postgresqlPassword: password
+  metrics:
+    enabled: false
+    serviceMonitor:
+      enabled: false
+
+# The command to run in the db migrate post-install/post-upgrade hook
+# WARNING: Only change if you know what you are doing
+dbMigrateArgs:
+  - bundle exec rake db:migrate

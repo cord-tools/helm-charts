@@ -1,0 +1,17 @@
+{{- if .Values.metrics.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "cord-api-v2.fullname" . }}-metrics
+  labels:
+    {{- include "cord-api-v2.labels" . | nindent 4 }}
+spec:
+  clusterIP: None
+  ports:
+    - port: 9394
+      targetPort: http-metrics
+      protocol: TCP
+      name: http-metrics
+  selector:
+    {{- include "cord-api-v2.selectorLabels" . | nindent 4 }}
+{{- end }}
