@@ -39,9 +39,6 @@ config:
   # Host where assets are hosted
   APP_ASSET_HOST: "https://cordtools.local"
 
-  # Public URL for docker registry for AEM images
-  DOCKER_REGISTRY_ENDPOINT: "https://registry.cordtools.local"
-
   # Google OAuth client id for sign in via Google
   # GOOGLE_OAUTH_CLIENT_ID: ""
 
