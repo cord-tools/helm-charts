@@ -1,0 +1,14 @@
+apiVersion: v2
+appVersion: "1.0.0-rc.0"
+description: Forwards requests to AEM environments
+name: cord-proxy
+version: 1.0.0-rc.0
+type: application
+icon: https://irp.cdn-website.com/27aeb91f/dms3rep/multi/Cord-Logo-Stacked-57x57.png
+home: https://github.com/cord-tools/helm-charts
+sources:
+  - https://github.com/cord-tools/cord-proxy
+maintainers:
+  - name: hoodoo-digital
+    url: https://hoodoo.digital
+    email: hello@hoodoo.digital
