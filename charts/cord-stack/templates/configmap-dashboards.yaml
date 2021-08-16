@@ -1,0 +1,22 @@
+{{- if and (index .Values "kube-prometheus-stack" "enabled") (index .Values "kube-prometheus-stack" "grafana" "enabled") -}}
+{{- $files := .Files.Glob "dashboards/*.json" }}
+{{- if $files }}
+apiVersion: v1
+kind: ConfigMapList
+items:
+  {{- range $path, $fileContents := $files }}
+  {{- $dashboardName := regexReplaceAll "(^.*/)(.*)\\.json$" $path "${2}" }}
+  - apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: {{ printf "%s-%s" (include "cord-stack.fullname" $) $dashboardName | trunc 63 | trimSuffix "-" }}
+      labels:
+        {{- if index $.Values "kube-prometheus-stack" "grafana" "sidecar" "dashboards" "label" }}
+        {{ index $.Values "kube-prometheus-stack" "grafana" "sidecar" "dashboards" "label" }}: "1"
+        {{- end }}
+        {{- include "cord-stack.labels" $ | nindent 8 }}
+    data:
+      {{ $dashboardName }}.json: {{ $.Files.Get $path | toJson }}
+  {{- end }}
+{{- end }}
+{{- end }}

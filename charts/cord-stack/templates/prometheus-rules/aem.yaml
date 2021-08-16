@@ -1,0 +1,52 @@
+{{- if and .Values.defaultPrometheusRules.create (index .Values "kube-prometheus-stack" "enabled") }}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: {{ printf "%s-%s" (include "cord-stack.fullname" .) "aem.rules" | trunc 63 | trimSuffix "-" }}
+  labels:
+    {{- include "cord-stack.labels" . | nindent 6}}
+spec:
+  groups:
+  - name: aem.rules
+    rules:
+    - alert: AEMReplicationAgentBlocked
+      annotations:
+        description: The replication agent {{`{{$labels.id}}`}} is blocked on {{`{{$labels.namespace}}`}}/{{`{{$labels.pod}}`}}.
+        summary: AEM replication agent is blocked
+      expr: |-
+        com_adobe_granite_replication_agent_QueueBlocked == 1
+        and
+        com_adobe_granite_replication_agent_Enabled == 1
+        and
+        com_adobe_granite_replication_agent_QueuePaused == 0
+      for: 15m
+      labels:
+        severity: critical
+    - alert: AEMBackupFailed
+      annotations:
+        description: The backup for {{`{{$labels.namespace}}`}}/{{`{{$labels.pod}}`}} failed.
+        summary: AEM backup failed
+      expr: |-
+        com_adobe_granite_Repository_BackupWasSuccessful == 0
+      for: 15m
+      labels:
+        severity: critical
+    - alert: AEMBackupHasntRun
+      annotations:
+        description: A backup for {{`{{$labels.namespace}}`}}/{{`{{$labels.pod}}`}} hasn't been created for over 36 hours.
+        summary: AEM hasn't run
+      expr: |-
+        aemcloud_backup_last_run_seconds_ago > 129600
+      for: 1m
+      labels:
+        severity: critical
+    - alert: AEMHighResponseTime
+      annotations:
+        description: The 75th percentile of response times for {{`{{$labels.namespace}}`}}/{{`{{$labels.pod}}`}} is over 1500ms.
+        summary: AEM high response time
+      expr: |-
+        com_adobe_granite_requests_logging_granite_request_metrics_timer_75thPercentile > 1500
+      for: 1m
+      labels:
+        severity: critical
+{{- end }}
