@@ -1,0 +1,14 @@
+{{- if .Values.localFileStore.enabled -}}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "cord-api.fullname" . }}
+  labels:
+    {{- include "cord-api.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    {{- toYaml .Values.localFileStore.accessModes | nindent 4}}
+  resources:
+    requests:
+      storage: {{ .Values.localFileStore.volumeSize }}
+{{- end -}}

@@ -3,5 +3,7 @@ remote: origin
 target-branch: main
 chart-dirs:
   - charts
-chart-repos: []
+chart-repos:
+  - grafana=https://grafana.github.io/helm-charts
+  - bitnami=https://charts.bitnami.com/bitnami
 helm-extra-args: --timeout 600s

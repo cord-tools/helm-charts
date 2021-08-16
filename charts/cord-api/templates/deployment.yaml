@@ -1,0 +1,87 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "cord-api.fullname" . }}
+  labels:
+    {{- include "cord-api.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "cord-api.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
+        {{- with .Values.podAnnotations }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+      labels:
+        {{- include "cord-api.selectorLabels" . | nindent 8 }}
+    spec:
+      serviceAccountName: {{ include "cord-api.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      {{- if .Values.localFileStore.enabled }}
+      volumes:
+        - name: {{ include "cord-api.name" . }}
+          persistentVolumeClaim:
+            claimName: {{ include "cord-api.fullname" . }}
+        - name: {{ include "cord-api.name" . }}-signing-key
+          secret:
+            secretName: {{ include "cord-api.fullname" . }}-signing-key
+      {{- end }}
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+            - name: http-internal
+              containerPort: 8080
+              protocol: TCP
+          {{- if .Values.localFileStore.enabled }}
+          volumeMounts:
+            - name: {{ include "cord-api.name" . }}
+              mountPath: {{ .Values.localFileStore.path }}
+            - name: {{ include "cord-api.name" . }}-signing-key
+              mountPath: /etc/aemcloud
+          {{- end }}
+          {{- include "cord-api.envVars" . | nindent 10 }}
+          livenessProbe:
+            httpGet:
+              path: /healthcheck
+              port: http-internal
+          readinessProbe:
+            httpGet:
+              path: /healthcheck
+              port: http-internal
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+        - name: environment-stopper
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args: ["./aem-cloud-api", "environment-stopper"]
+            {{- include "cord-api.envVars" . | nindent 10 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

@@ -1,0 +1,26 @@
+apiVersion: v2
+appVersion: "1.0.0-rc.0"
+description: The API for Cord Tools
+name: cord-api
+version: "1.0.0-rc.0"
+icon: https://irp.cdn-website.com/27aeb91f/dms3rep/multi/Cord-Logo-Stacked-57x57.png
+home: https://github.com/cord-tools/helm-charts
+sources:
+  - https://github.com/cord-tools/cord-ui
+maintainers:
+  - name: hoodoo-digital
+    url: https://hoodoo.digital
+    email: hello@hoodoo.digital
+dependencies:
+  - name: mongodb
+    version: ~10.5.0
+    condition: mongodb.enabled
+    repository: https://charts.bitnami.com/bitnami
+  - name: "loki"
+    version: "~2.3.0"
+    condition: loki.enabled
+    repository: https://grafana.github.io/helm-charts
+  - name: "promtail"
+    version: "~3.0.0"
+    condition: promtail.enabled
+    repository: https://grafana.github.io/helm-charts
