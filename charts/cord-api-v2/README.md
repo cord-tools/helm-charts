@@ -35,7 +35,6 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | config.APP_FROM_EMAIL | string | `"Cord Tools <support@cord.tools>"` |  |
 | config.APP_HOST | string | `"cordtools.local"` |  |
 | config.AWS_REGION | string | `""` |  |
-| config.DOCKER_REGISTRY_ENDPOINT | string | `"https://registry.cordtools.local"` |  |
 | config.OAUTH_APPLICATIONS_REQUIRE_SSL | string | `"true"` |  |
 | config.RAILS_ENV | string | `"production"` |  |
 | dbMigrateArgs[0] | string | `"bundle exec rake db:migrate"` |  |
