@@ -4,6 +4,7 @@ target-branch: main
 chart-dirs:
   - charts
 chart-repos:
+  - cord-tools=https://cord-tools.github.io/helm-charts
   - grafana=https://grafana.github.io/helm-charts
   - bitnami=https://charts.bitnami.com/bitnami
 helm-extra-args: --timeout 600s
