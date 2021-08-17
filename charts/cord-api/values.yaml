@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: public.ecr.aws/o1g8a1m8/cord-api
+  repository: public.ecr.aws/cord-tools/cord-api
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
   pullPolicy: IfNotPresent
@@ -93,8 +93,11 @@ config:
   GITHUB_CLIENT_ID: ""
   GITHUB_AUTH_URL: "https://github.com/login/oauth"
 
+  # Docker image to use as the base for AEM instances
+  BASE_IMAGE_REPOSITORY: "public.ecr.aws/cord-tools/base"
+
   # Docker image to use for dispatcher pods
-  DISPATCHER_IMAGE: "public.ecr.aws/o1g8a1m8/dispatcher:4.3.3"
+  DISPATCHER_IMAGE: "public.ecr.aws/cord-tools/dispatcher:4.3.3"
 
   # Port to use for dispatcher
   # DISPATCHER_PORT: "80"
