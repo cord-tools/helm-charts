@@ -29,6 +29,8 @@ jobs:
           helm repo add cord-tools https://cord-tools.github.io/helm-charts
           helm repo add grafana https://grafana.github.io/helm-charts
           helm repo add bitnami https://charts.bitnami.com/bitnami
+          helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+          helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.1.0

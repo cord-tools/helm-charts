@@ -1,0 +1,11 @@
+cord-api:
+  loki:
+    enabled: false
+  promtail:
+    enabled: false
+
+ingress-nginx:
+  enabled: false
+
+kube-prometheus-stack:
+  enabled: false
