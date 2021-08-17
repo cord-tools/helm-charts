@@ -1,6 +1,6 @@
 # cord-api-v2
 
-![Version: 1.0.0-rc.0](https://img.shields.io/badge/Version-1.0.0--rc.0-informational?style=flat-square) ![AppVersion: 1.0.0-rc.0](https://img.shields.io/badge/AppVersion-1.0.0--rc.0-informational?style=flat-square)
+![Version: 1.0.0-rc.1](https://img.shields.io/badge/Version-1.0.0--rc.1-informational?style=flat-square) ![AppVersion: 1.0.0-rc.0](https://img.shields.io/badge/AppVersion-1.0.0--rc.0-informational?style=flat-square)
 
 Authentication and authorization service for Cord Tools
 
@@ -40,7 +40,7 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | dbMigrateArgs[0] | string | `"bundle exec rake db:migrate"` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"public.ecr.aws/o1g8a1m8/cord-api-v2"` |  |
+| image.repository | string | `"public.ecr.aws/cord-tools/cord-api-v2"` |  |
 | image.tag | string | `""` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
