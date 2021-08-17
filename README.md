@@ -10,10 +10,10 @@ Helm's [documentation](https://helm.sh/docs) to get started.
 Once Helm has been set up correctly, add the repo as follows:
 
 ```console
-  helm repo add hoodoo-digital https://hoodoo-digital.github.io/helm-charts
+  helm repo add cord-tools https://cord-tools.github.io/helm-charts
 ```
 
 If you had already added this repo earlier, run `helm repo update` to retrieve
 the latest versions of the packages.  You can then run `helm search repo
-hoodoo-digital` to see the charts.
+cord-tools` to see the charts.
 
