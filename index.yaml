@@ -5,31 +5,31 @@ entries:
     appVersion: 1.0.0-rc.0
     created: "2021-08-17T11:55:27.622218329-06:00"
     dependencies:
-      - condition: mongodb.enabled
-        name: mongodb
-        repository: https://charts.bitnami.com/bitnami
-        version: ~10.5.0
-      - condition: loki.enabled
-        name: loki
-        repository: https://grafana.github.io/helm-charts
-        version: ~2.3.0
-      - condition: promtail.enabled
-        name: promtail
-        repository: https://grafana.github.io/helm-charts
-        version: ~3.0.0
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: ~10.5.0
+    - condition: loki.enabled
+      name: loki
+      repository: https://grafana.github.io/helm-charts
+      version: ~2.3.0
+    - condition: promtail.enabled
+      name: promtail
+      repository: https://grafana.github.io/helm-charts
+      version: ~3.0.0
     description: The API for Cord Tools
     digest: a5a28134ce1f07c1642f9e7b9e40ceeacd3a018107000ce4c055f39d2f4420cd
     home: https://github.com/cord-tools/helm-charts
     icon: https://irp.cdn-website.com/27aeb91f/dms3rep/multi/Cord-Logo-Stacked-57x57.png
     maintainers:
-      - email: hello@hoodoo.digital
-        name: hoodoo-digital
-        url: https://hoodoo.digital
+    - email: hello@hoodoo.digital
+      name: hoodoo-digital
+      url: https://hoodoo.digital
     name: cord-api
     sources:
-      - https://github.com/cord-tools/cord-ui
+    - https://github.com/cord-tools/cord-ui
     urls:
-      - https://github.com/cord-tools/helm-charts/releases/download/cord-api-1.0.0-rc.1/cord-api-1.0.0-rc.1.tgz
+    - https://github.com/cord-tools/helm-charts/releases/download/cord-api-1.0.0-rc.1/cord-api-1.0.0-rc.1.tgz
     version: 1.0.0-rc.1
   - apiVersion: v2
     appVersion: 1.0.0-rc.0
@@ -142,6 +142,49 @@ entries:
     type: application
     urls:
     - https://github.com/cord-tools/helm-charts/releases/download/cord-proxy-1.0.0-rc.0/cord-proxy-1.0.0-rc.0.tgz
+    version: 1.0.0-rc.0
+  cord-stack:
+  - apiVersion: v2
+    appVersion: 1.0.0-rc.0
+    created: "2021-08-17T19:59:32.646522956Z"
+    dependencies:
+    - condition: cord-api.enabled
+      name: cord-api
+      repository: https://cord-tools.github.io/helm-charts
+      version: 1.0.0-rc.1
+    - condition: cord-api-v2.enabled
+      name: cord-api-v2
+      repository: https://cord-tools.github.io/helm-charts
+      version: 1.0.0-rc.1
+    - condition: cord-ui.enabled
+      name: cord-ui
+      repository: https://cord-tools.github.io/helm-charts
+      version: 1.0.0-rc.1
+    - condition: cord-proxy.enabled
+      name: cord-proxy
+      repository: https://cord-tools.github.io/helm-charts
+      version: 1.0.0-rc.1
+    - condition: ingress-nginx.enabled
+      name: ingress-nginx
+      repository: https://kubernetes.github.io/ingress-nginx
+      version: ~3.22.0
+    - condition: kube-prometheus-stack.enabled
+      name: kube-prometheus-stack
+      repository: https://prometheus-community.github.io/helm-charts
+      version: ~13.3.0
+    description: The fullstack of Cord Tools
+    digest: 73096f2da1d3eb2a03b413d3c971f1e7530fbf9a615d847d3efd141d303a5988
+    home: https://github.com/cord-tools/helm-charts
+    icon: https://irp.cdn-website.com/27aeb91f/dms3rep/multi/Cord-Logo-Stacked-57x57.png
+    maintainers:
+    - email: hello@hoodoo.digital
+      name: hoodoo-digital
+      url: https://hoodoo.digital
+    name: cord-stack
+    sources:
+    - https://github.com/cord-tools/
+    urls:
+    - https://github.com/cord-tools/helm-charts/releases/download/cord-stack-1.0.0-rc.0/cord-stack-1.0.0-rc.0.tgz
     version: 1.0.0-rc.0
   cord-ui:
   - apiVersion: v2
