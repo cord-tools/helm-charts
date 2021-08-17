@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: public.ecr.aws/o1g8a1m8/cord-proxy
+  repository: public.ecr.aws/cord-tools/cord-proxy
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
   pullPolicy: IfNotPresent
