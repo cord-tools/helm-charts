@@ -1,6 +1,6 @@
 # cord-api
 
-![Version: 1.0.0-rc.0](https://img.shields.io/badge/Version-1.0.0--rc.0-informational?style=flat-square) ![AppVersion: 1.0.0-rc.0](https://img.shields.io/badge/AppVersion-1.0.0--rc.0-informational?style=flat-square)
+![Version: 1.0.0-rc.1](https://img.shields.io/badge/Version-1.0.0--rc.1-informational?style=flat-square) ![AppVersion: 1.0.0-rc.0](https://img.shields.io/badge/AppVersion-1.0.0--rc.0-informational?style=flat-square)
 
 The API for Cord Tools
 
@@ -46,9 +46,10 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | config.AEM_DEFAULT_VOLUME_SIZE | string | `"40Gi"` |  |
 | config.AEM_MAX_VOLUME_SIZE | string | `"1000Gi"` |  |
 | config.AEM_MEMORY_REQUEST | string | `"2G"` |  |
+| config.BASE_IMAGE_REPOSITORY | string | `"public.ecr.aws/cord-tools/base"` |  |
 | config.BUCKET_URL | string | `"file:///cordtools-files"` |  |
 | config.BUILD_IMAGE_PULL_SECRETS | string | `""` |  |
-| config.DISPATCHER_IMAGE | string | `"public.ecr.aws/o1g8a1m8/dispatcher:4.3.3"` |  |
+| config.DISPATCHER_IMAGE | string | `"public.ecr.aws/cord-tools/dispatcher:4.3.3"` |  |
 | config.ENVIRONMENT_IMAGE_PULL_SECRETS | string | `""` |  |
 | config.ENVIRONMENT_STORAGE_CLASS | string | `""` |  |
 | config.GITHUB_AUTH_URL | string | `"https://github.com/login/oauth"` |  |
@@ -57,7 +58,7 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | config.WEB_APP_URL | string | `"https://cordtools.local/"` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"public.ecr.aws/o1g8a1m8/cord-api"` |  |
+| image.repository | string | `"public.ecr.aws/cord-tools/cord-api"` |  |
 | image.tag | string | `""` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations."nginx.ingress.kubernetes.io/proxy-body-size" | string | `"0"` |  |
