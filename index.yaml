@@ -3,36 +3,6 @@ entries:
   cord-api:
   - apiVersion: v2
     appVersion: 1.0.0-rc.0
-    created: "2021-08-17T17:18:42.230541087Z"
-    dependencies:
-    - condition: mongodb.enabled
-      name: mongodb
-      repository: https://charts.bitnami.com/bitnami
-      version: ~10.5.0
-    - condition: loki.enabled
-      name: loki
-      repository: https://grafana.github.io/helm-charts
-      version: ~2.3.0
-    - condition: promtail.enabled
-      name: promtail
-      repository: https://grafana.github.io/helm-charts
-      version: ~3.0.0
-    description: The API for Cord Tools
-    digest: 4861d0a75c08414851aa5068bbaa73bbd3c385bc2089b762bb0aa49167d8cf25
-    home: https://github.com/cord-tools/helm-charts
-    icon: https://irp.cdn-website.com/27aeb91f/dms3rep/multi/Cord-Logo-Stacked-57x57.png
-    maintainers:
-    - email: hello@hoodoo.digital
-      name: hoodoo-digital
-      url: https://hoodoo.digital
-    name: cord-api
-    sources:
-    - https://github.com/cord-tools/cord-ui
-    urls:
-    - https://github.com/cord-tools/helm-charts/releases/download/cord-api-1.0.0-rc.1/cord-api-1.0.0-rc.1.tgz
-    version: 1.0.0-rc.1
-  - apiVersion: v2
-    appVersion: 1.0.0-rc.0
     created: "2021-08-16T19:59:21.11689304Z"
     dependencies:
     - condition: mongodb.enabled
@@ -64,14 +34,14 @@ entries:
   cord-api-v2:
   - apiVersion: v2
     appVersion: 1.0.0-rc.0
-    created: "2021-08-16T22:35:41.028505646Z"
+    created: "2021-08-17T17:19:37.06203342Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
       repository: https://charts.bitnami.com/bitnami
       version: ~10.2.0
     description: Authentication and authorization service for Cord Tools
-    digest: 6db722c48c021cf2c6a1b475eb6522be8b19cf8047d4baf4ee1dea7ed188b4fd
+    digest: f6cfba91d50c200f0976082d677b69b7a8a14a35f3b0762b337f9dab6baf6557
     home: https://github.com/cord-tools/helm-charts
     icon: https://irp.cdn-website.com/27aeb91f/dms3rep/multi/Cord-Logo-Stacked-57x57.png
     maintainers:
@@ -82,18 +52,18 @@ entries:
     sources:
     - https://github.com/cord-tools/cord-api-v2
     urls:
-    - https://github.com/cord-tools/helm-charts/releases/download/cord-api-v2-1.0.0-rc.0/cord-api-v2-1.0.0-rc.0.tgz
-    version: 1.0.0-rc.0
+    - https://github.com/cord-tools/helm-charts/releases/download/cord-api-v2-1.0.0-rc.1/cord-api-v2-1.0.0-rc.1.tgz
+    version: 1.0.0-rc.1
   - apiVersion: v2
     appVersion: 1.0.0-rc.0
-    created: "2021-08-17T17:18:42.377703111Z"
+    created: "2021-08-16T22:35:41.028505646Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
       repository: https://charts.bitnami.com/bitnami
       version: ~10.2.0
     description: Authentication and authorization service for Cord Tools
-    digest: 7a825d501fbbdb4ee7e86f9a7cf7f3db883724ffc70ef800f54752c9aa435837
+    digest: 6db722c48c021cf2c6a1b475eb6522be8b19cf8047d4baf4ee1dea7ed188b4fd
     home: https://github.com/cord-tools/helm-charts
     icon: https://irp.cdn-website.com/27aeb91f/dms3rep/multi/Cord-Logo-Stacked-57x57.png
     maintainers:
