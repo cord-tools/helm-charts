@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: public.ecr.aws/o1g8a1m8/cord-api-v2
+  repository: public.ecr.aws/cord-tools/cord-api-v2
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
   pullPolicy: IfNotPresent
