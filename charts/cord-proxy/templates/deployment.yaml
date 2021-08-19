@@ -44,16 +44,16 @@ spec:
             {{- end }}
           livenessProbe:
             httpGet:
-              path: /aem-cloud-static/health-check.txt
+              path: /cord-static/health-check.txt
               port: http
           readinessProbe:
             httpGet:
-              path: /aem-cloud-static/health-check.txt
+              path: /cord-static/health-check.txt
               port: http
           env:
-            - name: AEMCLOUD_API_URL
-              {{- if .Values.aemcloudAPIUrl }}
-              value: {{ .Values.aemcloudAPIUrl | quote }}
+            - name: API_URL
+              {{- if .Values.apiUrl }}
+              value: {{ .Values.apiUrl | quote }}
               {{- else }}
               value: "http://{{ include "cord-proxy.cord-api.fullname" . }}:8080"
               {{- end }}

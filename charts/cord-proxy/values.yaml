@@ -20,7 +20,7 @@ internalAPIUser: "user"
 internalAPIPass: "password"
 
 # URL to internal cord-api
-# cordAPIUrl: "http://cord-api:8080"
+# apiUrl: "http://cord-api:8080"
 
 service:
   type: ClusterIP
