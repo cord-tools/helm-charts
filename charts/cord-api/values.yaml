@@ -35,9 +35,9 @@ packageScheduleRunner:
     - frequency: weekly
       schedule: "0 5 * * 0"
 
-# The user to use for internal calls to the AEM Cloud API
+# The user to use for internal calls to the cord-api
 # internalAPIUser: "user"
-# The password to use for internal calls to the AEM Cloud API
+# The password to use for internal calls to the cord-api
 # internalAPIPass: "password"
 
 localFileStore:
@@ -50,13 +50,13 @@ localFileStore:
   accessModes: ["ReadWriteOnce"]
 
 config:
-  # the package tool client id generated in AEM Cloud API v2
-  AEMCLOUD_CLIENT_ID: ""
-  AEMCLOUD_ACCESS_TOKEN_URI: "https://cordtools.local/oauth/token"
-  AEMCLOUD_AUTHORIZATION_URI: "https://cordtools.local/oauth/authorize"
-  AEMCLOUD_REDIRECT_URI: "https://cordtools.local/oauth/authorize/package-tool"
+  # the package tool client id generated in cord-api-v2
+  OAUTH_CLIENT_ID: ""
+  OAUTH_ACCESS_TOKEN_URI: "https://cordtools.local/oauth/token"
+  OAUTH_AUTHORIZATION_URI: "https://cordtools.local/oauth/authorize"
+  OAUTH_REDIRECT_URI: "https://cordtools.local/oauth/authorize/package-tool"
 
-  # AWS region that AEM Cloud runs in. Is used for creating cloud data stores for environments.
+  # AWS region that Cord Tools runs in. Is used for creating cloud data stores for environments.
   # AWS_REGION: us-west-2
 
   # URL to the bucket to use as a file store
@@ -86,7 +86,7 @@ config:
   # Comma separated list of image pull secrets to add to build runner pods. e.g. "docker-hub, private-creds-1"
   BUILD_IMAGE_PULL_SECRETS: ""
 
-  # Public URL to AEM Cloud
+  # Public URL to Cord Tools
   WEB_APP_URL: "https://cordtools.local/"
 
   # Values for Github integration
@@ -249,8 +249,8 @@ promtail:
             - __meta_kubernetes_pod_label_name
           target_label: name
         - action: labelmap
-          regex: __meta_kubernetes_pod_label_aemCloud(.+)
-          replacement: aemCloud${1}
+          regex: __meta_kubernetes_pod_label_cordTools(.+)
+          replacement: cordTools${1}
         - action: replace
           replacement: /var/log/pods/*$1/*.log
           separator: /
@@ -262,16 +262,16 @@ promtail:
 # The command to run to trigger backups in a cronjob
 # WARNING: Only change if you know what you are doing
 backupTriggerArgs:
-  - ./aem-cloud-api backup-trigger
+  - ./cord-api backup-trigger
 
 # The command to run to clean up backups in a cronjob.
 # It must be a string since it is a template
 # WARNING: Only change if you know what you are doing
 backupCleanerArgs: |-
-  - ./aem-cloud-api backup-cleaner --days={{ .Values.backupCleaner.days }} --yes
+  - ./cord-api backup-cleaner --days={{ .Values.backupCleaner.days }} --yes
 
 # The command to run to build packages on a schedule in a cronjob
 # It must be a string since it is a template
 # WARNING: Only change if you know what you are doing
 packageScheduleRunnerArgs: |-
-  - ./aem-cloud-api package-schedule-runner --frequency={{ .schedule.frequency }} --workers={{ .Values.packageScheduleRunner.workers }}
+  - ./cord-api package-schedule-runner --frequency={{ .schedule.frequency }} --workers={{ .Values.packageScheduleRunner.workers }}
