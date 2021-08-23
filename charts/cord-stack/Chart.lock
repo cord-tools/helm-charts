@@ -1,21 +1,21 @@
 dependencies:
 - name: cord-api
   repository: https://cord-tools.github.io/helm-charts
-  version: 1.0.0-rc.1
+  version: 1.0.0-rc.2
 - name: cord-api-v2
   repository: https://cord-tools.github.io/helm-charts
-  version: 1.0.0-rc.1
+  version: 1.0.0-rc.2
 - name: cord-ui
   repository: https://cord-tools.github.io/helm-charts
-  version: 1.0.0-rc.1
+  version: 1.0.0-rc.2
 - name: cord-proxy
   repository: https://cord-tools.github.io/helm-charts
-  version: 1.0.0-rc.1
+  version: 1.0.0-rc.2
 - name: ingress-nginx
   repository: https://kubernetes.github.io/ingress-nginx
   version: 3.22.0
 - name: kube-prometheus-stack
   repository: https://prometheus-community.github.io/helm-charts
   version: 13.3.0
-digest: sha256:92be24d1868a6dc65f49ff63ba7007e5c4faf89682fb222a5c0788c6ee3fee9a
-generated: "2021-08-17T12:02:17.446821236-06:00"
+digest: sha256:fa0c6a9fca0eb52f6fa977f8c9ce92eebea43f07f25dd65de046bee7c1e73469
+generated: "2021-08-23T13:14:16.402672922-06:00"
