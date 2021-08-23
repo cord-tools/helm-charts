@@ -1,6 +1,6 @@
 # cord-api
 
-![Version: 1.0.0-rc.1](https://img.shields.io/badge/Version-1.0.0--rc.1-informational?style=flat-square) ![AppVersion: 1.0.0-rc.0](https://img.shields.io/badge/AppVersion-1.0.0--rc.0-informational?style=flat-square)
+![Version: 1.0.0-rc.2](https://img.shields.io/badge/Version-1.0.0--rc.2-informational?style=flat-square) ![AppVersion: 1.0.0-rc.1](https://img.shields.io/badge/AppVersion-1.0.0--rc.1-informational?style=flat-square)
 
 The API for Cord Tools
 
@@ -36,13 +36,9 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | backupCleaner.days | int | `30` |  |
 | backupCleaner.enabled | bool | `false` |  |
 | backupCleaner.schedule | string | `"0 7 * * *"` |  |
-| backupCleanerArgs | string | `"- ./aem-cloud-api backup-cleaner --days={{ .Values.backupCleaner.days }} --yes"` |  |
+| backupCleanerArgs | string | `"- ./cord-api backup-cleaner --days={{ .Values.backupCleaner.days }} --yes"` |  |
 | backupSchedule | string | `"0 7 * * *"` |  |
-| backupTriggerArgs[0] | string | `"./aem-cloud-api backup-trigger"` |  |
-| config.AEMCLOUD_ACCESS_TOKEN_URI | string | `"https://cordtools.local/oauth/token"` |  |
-| config.AEMCLOUD_AUTHORIZATION_URI | string | `"https://cordtools.local/oauth/authorize"` |  |
-| config.AEMCLOUD_CLIENT_ID | string | `""` |  |
-| config.AEMCLOUD_REDIRECT_URI | string | `"https://cordtools.local/oauth/authorize/package-tool"` |  |
+| backupTriggerArgs[0] | string | `"./cord-api backup-trigger"` |  |
 | config.AEM_DEFAULT_VOLUME_SIZE | string | `"40Gi"` |  |
 | config.AEM_MAX_VOLUME_SIZE | string | `"1000Gi"` |  |
 | config.AEM_MEMORY_REQUEST | string | `"2G"` |  |
@@ -55,6 +51,10 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | config.GITHUB_AUTH_URL | string | `"https://github.com/login/oauth"` |  |
 | config.GITHUB_CLIENT_ID | string | `""` |  |
 | config.MAX_ENVIRONMENTS | string | `"10"` |  |
+| config.OAUTH_ACCESS_TOKEN_URI | string | `"https://cordtools.local/oauth/token"` |  |
+| config.OAUTH_AUTHORIZATION_URI | string | `"https://cordtools.local/oauth/authorize"` |  |
+| config.OAUTH_CLIENT_ID | string | `""` |  |
+| config.OAUTH_REDIRECT_URI | string | `"https://cordtools.local/oauth/authorize/package-tool"` |  |
 | config.WEB_APP_URL | string | `"https://cordtools.local/"` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
@@ -95,7 +95,7 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | packageScheduleRunner.frequencies[1].frequency | string | `"weekly"` |  |
 | packageScheduleRunner.frequencies[1].schedule | string | `"0 5 * * 0"` |  |
 | packageScheduleRunner.workers | int | `5` |  |
-| packageScheduleRunnerArgs | string | `"- ./aem-cloud-api package-schedule-runner --frequency={{ .schedule.frequency }} --workers={{ .Values.packageScheduleRunner.workers }}"` |  |
+| packageScheduleRunnerArgs | string | `"- ./cord-api package-schedule-runner --frequency={{ .schedule.frequency }} --workers={{ .Values.packageScheduleRunner.workers }}"` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | promtail.config.snippets.common[0].action | string | `"replace"` |  |
@@ -120,8 +120,8 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | promtail.config.snippets.common[5].source_labels[0] | string | `"__meta_kubernetes_pod_label_name"` |  |
 | promtail.config.snippets.common[5].target_label | string | `"name"` |  |
 | promtail.config.snippets.common[6].action | string | `"labelmap"` |  |
-| promtail.config.snippets.common[6].regex | string | `"__meta_kubernetes_pod_label_aemCloud(.+)"` |  |
-| promtail.config.snippets.common[6].replacement | string | `"aemCloud${1}"` |  |
+| promtail.config.snippets.common[6].regex | string | `"__meta_kubernetes_pod_label_cordTools(.+)"` |  |
+| promtail.config.snippets.common[6].replacement | string | `"cordTools${1}"` |  |
 | promtail.config.snippets.common[7].action | string | `"replace"` |  |
 | promtail.config.snippets.common[7].replacement | string | `"/var/log/pods/*$1/*.log"` |  |
 | promtail.config.snippets.common[7].separator | string | `"/"` |  |
