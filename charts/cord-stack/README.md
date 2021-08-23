@@ -1,6 +1,6 @@
 # cord-stack
 
-![Version: 1.0.0-rc.0](https://img.shields.io/badge/Version-1.0.0--rc.0-informational?style=flat-square) ![AppVersion: 1.0.0-rc.0](https://img.shields.io/badge/AppVersion-1.0.0--rc.0-informational?style=flat-square)
+![Version: 1.0.0-rc.1](https://img.shields.io/badge/Version-1.0.0--rc.1-informational?style=flat-square) ![AppVersion: 1.0.0-rc.1](https://img.shields.io/badge/AppVersion-1.0.0--rc.1-informational?style=flat-square)
 
 The fullstack of Cord Tools
 
@@ -12,10 +12,10 @@ The fullstack of Cord Tools
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://cord-tools.github.io/helm-charts | cord-api | 1.0.0-rc.1 |
-| https://cord-tools.github.io/helm-charts | cord-api-v2 | 1.0.0-rc.1 |
-| https://cord-tools.github.io/helm-charts | cord-proxy | 1.0.0-rc.1 |
-| https://cord-tools.github.io/helm-charts | cord-ui | 1.0.0-rc.1 |
+| https://cord-tools.github.io/helm-charts | cord-api | 1.0.0-rc.2 |
+| https://cord-tools.github.io/helm-charts | cord-api-v2 | 1.0.0-rc.2 |
+| https://cord-tools.github.io/helm-charts | cord-proxy | 1.0.0-rc.2 |
+| https://cord-tools.github.io/helm-charts | cord-ui | 1.0.0-rc.2 |
 | https://kubernetes.github.io/ingress-nginx | ingress-nginx | ~3.22.0 |
 | https://prometheus-community.github.io/helm-charts | kube-prometheus-stack | ~13.3.0 |
 
@@ -61,10 +61,6 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | cord-api.backupCleaner.enabled | bool | `false` |  |
 | cord-api.backupCleaner.schedule | string | `"0 7 * * *"` |  |
 | cord-api.backupSchedule | string | `"0 7 * * *"` |  |
-| cord-api.config.AEMCLOUD_ACCESS_TOKEN_URI | string | `"https://cordtools.local/oauth/token"` |  |
-| cord-api.config.AEMCLOUD_AUTHORIZATION_URI | string | `"https://cordtools.local/oauth/authorize"` |  |
-| cord-api.config.AEMCLOUD_CLIENT_ID | string | `""` |  |
-| cord-api.config.AEMCLOUD_REDIRECT_URI | string | `"https://cordtools.local/oauth/authorize/package-tool"` |  |
 | cord-api.config.AEM_DEFAULT_VOLUME_SIZE | string | `"40Gi"` |  |
 | cord-api.config.AEM_MAX_VOLUME_SIZE | string | `"1000Gi"` |  |
 | cord-api.config.AEM_MEMORY_REQUEST | string | `"2G"` |  |
@@ -77,6 +73,10 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | cord-api.config.GITHUB_AUTH_URL | string | `"https://github.com/login/oauth"` |  |
 | cord-api.config.GITHUB_CLIENT_ID | string | `""` |  |
 | cord-api.config.MAX_ENVIRONMENTS | string | `"10"` |  |
+| cord-api.config.OAUTH_ACCESS_TOKEN_URI | string | `"https://cordtools.local/oauth/token"` |  |
+| cord-api.config.OAUTH_AUTHORIZATION_URI | string | `"https://cordtools.local/oauth/authorize"` |  |
+| cord-api.config.OAUTH_CLIENT_ID | string | `""` |  |
+| cord-api.config.OAUTH_REDIRECT_URI | string | `"https://cordtools.local/oauth/authorize/package-tool"` |  |
 | cord-api.config.WEB_APP_URL | string | `"https://cordtools.local/"` |  |
 | cord-api.enabled | bool | `true` |  |
 | cord-api.imagePullSecrets | list | `[]` |  |
@@ -116,8 +116,8 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | cord-api.promtail.config.snippets.common[5].source_labels[0] | string | `"__meta_kubernetes_pod_label_name"` |  |
 | cord-api.promtail.config.snippets.common[5].target_label | string | `"name"` |  |
 | cord-api.promtail.config.snippets.common[6].action | string | `"labelmap"` |  |
-| cord-api.promtail.config.snippets.common[6].regex | string | `"__meta_kubernetes_pod_label_aemCloud(.+)"` |  |
-| cord-api.promtail.config.snippets.common[6].replacement | string | `"aemCloud${1}"` |  |
+| cord-api.promtail.config.snippets.common[6].regex | string | `"__meta_kubernetes_pod_label_cordTools(.+)"` |  |
+| cord-api.promtail.config.snippets.common[6].replacement | string | `"cordTools${1}"` |  |
 | cord-api.promtail.config.snippets.common[7].action | string | `"replace"` |  |
 | cord-api.promtail.config.snippets.common[7].replacement | string | `"/var/log/pods/*$1/*.log"` |  |
 | cord-api.promtail.config.snippets.common[7].separator | string | `"/"` |  |
@@ -136,27 +136,27 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | cord-proxy.internalAPIUser | string | `"internaluser"` |  |
 | cord-proxy.metrics.enabled | bool | `true` |  |
 | cord-proxy.serviceMonitor.enabled | bool | `true` |  |
-| cord-ui.config.apiBaseUrl | string | `"https://cord.local"` |  |
-| cord-ui.config.authenticationAccessTokenUri | string | `"https://cord.local/oauth/token"` |  |
-| cord-ui.config.authenticationAuthorizationUri | string | `"https://cord.local/oauth/authorize"` |  |
-| cord-ui.config.authenticationBaseUrl | string | `"https://cord.local"` |  |
+| cord-ui.config.apiBaseUrl | string | `"https://cordtools.local"` |  |
+| cord-ui.config.authenticationAccessTokenUri | string | `"https://cordtools.local/oauth/token"` |  |
+| cord-ui.config.authenticationAuthorizationUri | string | `"https://cordtools.local/oauth/authorize"` |  |
+| cord-ui.config.authenticationBaseUrl | string | `"https://cordtools.local"` |  |
 | cord-ui.config.authenticationClientId | string | `""` |  |
-| cord-ui.config.authenticationRedirectUri | string | `"https://cord.local/login"` |  |
+| cord-ui.config.authenticationRedirectUri | string | `"https://cordtools.local/login"` |  |
 | cord-ui.config.bitbucketApiUrl | string | `"https://api.bitbucket.org/2.0"` |  |
 | cord-ui.config.bitbucketAuthUrl | string | `"https://bitbucket.org/site/oauth2/authorize"` |  |
 | cord-ui.config.bitbucketBaseUrl | string | `"https://bitbucket.org"` |  |
-| cord-ui.config.bitbucketCallbackUri | string | `"https://cord.local/bitbucket/callback"` |  |
+| cord-ui.config.bitbucketCallbackUri | string | `"https://cordtools.local/bitbucket/callback"` |  |
 | cord-ui.config.bitbucketClientId | string | `""` |  |
-| cord-ui.config.environmentUrlSuffix | string | `"cord.local"` |  |
+| cord-ui.config.environmentUrlSuffix | string | `"cordtools.local"` |  |
 | cord-ui.config.githubApiUrl | string | `"https://api.github.com"` |  |
 | cord-ui.config.githubAuthUrl | string | `""` |  |
 | cord-ui.config.githubBaseUrl | string | `"https://github.com"` |  |
 | cord-ui.config.githubClientId | string | `""` |  |
-| cord-ui.config.githubRedirectUri | string | `"https://cord.local/github/callback"` |  |
+| cord-ui.config.githubRedirectUri | string | `"https://cordtools.local/github/callback"` |  |
 | cord-ui.config.gitlabApiUrl | string | `"https://gitlab.com/oauth/authorize"` |  |
 | cord-ui.config.gitlabAppId | string | `""` |  |
 | cord-ui.config.gitlabBaseUrl | string | `"https://gitlab.com"` |  |
-| cord-ui.config.gitlabCallbackUri | string | `"https://cord.local/gitlab/callback"` |  |
+| cord-ui.config.gitlabCallbackUri | string | `"https://cordtools.local/gitlab/callback"` |  |
 | cord-ui.enabled | bool | `true` |  |
 | cord-ui.imagePullSecrets | list | `[]` |  |
 | cord-ui.ingress.annotations."nginx.ingress.kubernetes.io/force-ssl-redirect" | string | `"true"` |  |
