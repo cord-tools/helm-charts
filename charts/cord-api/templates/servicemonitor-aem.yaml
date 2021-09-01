@@ -10,7 +10,7 @@ spec:
     any: true
   selector:
     matchLabels:
-      aemCloudApp: aem
+      cordToolsApp: aem
   endpoints:
     - port: prometheus-metrics
       interval: 1m
