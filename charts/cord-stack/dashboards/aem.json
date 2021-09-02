@@ -401,7 +401,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "min(aemcloud_backup_last_run_seconds_ago{account=\"$namespace\",exported_instance=\"$pod\"})",
+          "expr": "min(cordtools_backup_last_run_seconds_ago{account=\"$namespace\",exported_instance=\"$pod\"})",
           "format": "time_series",
           "instant": true,
           "intervalFactor": 2,
@@ -1770,7 +1770,7 @@
   "style": "dark",
   "tags": [
     "aem",
-    "cordtools"
+    "cord-tools"
   ],
   "templating": {
     "list": [

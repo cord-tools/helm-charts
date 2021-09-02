@@ -683,7 +683,10 @@
   "refresh": "30s",
   "schemaVersion": 18,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "dispatcher",
+    "cord-tools"
+  ],
   "templating": {
     "list": [
       {

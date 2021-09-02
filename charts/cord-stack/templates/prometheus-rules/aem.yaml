@@ -33,10 +33,10 @@ spec:
         severity: critical
     - alert: AEMBackupHasntRun
       annotations:
-        description: A backup for {{`{{$labels.namespace}}`}}/{{`{{$labels.pod}}`}} hasn't been created for over 36 hours.
+        description: A backup for {{`{{$labels.namespace}}`}}/{{`{{$labels.exported_instance}}`}} hasn't been created for over 36 hours.
         summary: AEM hasn't run
       expr: |-
-        aemcloud_backup_last_run_seconds_ago > 129600
+        min by(exported_instance, namespace) (cordtools_backup_last_run_seconds_ago) > 129600
       for: 1m
       labels:
         severity: critical
