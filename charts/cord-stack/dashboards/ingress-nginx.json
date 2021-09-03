@@ -41,7 +41,7 @@
         "type": "dashboard"
       },
       {
-        "datasource": "$datasource",
+        "datasource": "${DS_PROMETHEUS}",
         "enable": true,
         "expr": "sum(changes(nginx_ingress_controller_config_last_reload_successful_timestamp_seconds{instance!=\"unknown\",controller_class=~\"$controller_class\",namespace=~\"$namespace\"}[30s])) by (controller_class)",
         "hide": false,
@@ -72,7 +72,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "$datasource",
+      "datasource": "${DS_PROMETHEUS}",
       "format": "ops",
       "gauge": {
         "maxValue": 100,
@@ -124,7 +124,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "round(sum(irate(nginx_ingress_controller_nginx_process_requests_total{controller_pod=~\"$controller\",controller_class=~\"$controller_class\",namespace=~\"$namespace\"}[2m])), 0.001)",
+          "expr": "round(sum(irate(nginx_ingress_controller_requests{controller_pod=~\"$controller\",controller_class=~\"$controller_class\",namespace=~\"$namespace\"}[2m])), 0.001)",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A",
@@ -154,7 +154,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "$datasource",
+      "datasource": "${DS_PROMETHEUS}",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -206,7 +206,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(avg_over_time(nginx_ingress_controller_nginx_process_connections{controller_pod=~\"$controller\",controller_class=~\"$controller_class\",controller_namespace=~\"$namespace\"}[2m]))",
+          "expr": "sum(avg_over_time(nginx_ingress_controller_nginx_process_connections{controller_pod=~\"$controller\",controller_class=~\"$controller_class\",controller_namespace=~\"$namespace\",state=\"active\"}[2m]))",
           "format": "time_series",
           "instant": false,
           "intervalFactor": 1,
@@ -237,7 +237,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "$datasource",
+      "datasource": "${DS_PROMETHEUS}",
       "format": "percentunit",
       "gauge": {
         "maxValue": 100,
@@ -289,7 +289,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(rate(nginx_ingress_controller_nginx_process_requests_total{controller_pod=~\"$controller\",controller_class=~\"$controller_class\",namespace=~\"$namespace\",status!~\"[4-5].*\"}[2m])) / sum(rate(nginx_ingress_controller_nginx_process_requests_total{controller_pod=~\"$controller\",controller_class=~\"$controller_class\",namespace=~\"$namespace\"}[2m]))",
+          "expr": "sum(rate(nginx_ingress_controller_requests{controller_pod=~\"$controller\",controller_class=~\"$controller_class\",namespace=~\"$namespace\",status!~\"[4-5].*\"}[2m])) / sum(rate(nginx_ingress_controller_requests{controller_pod=~\"$controller\",controller_class=~\"$controller_class\",namespace=~\"$namespace\"}[2m]))",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A",
@@ -319,7 +319,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "$datasource",
+      "datasource": "${DS_PROMETHEUS}",
       "decimals": 0,
       "format": "none",
       "gauge": {
@@ -372,9 +372,9 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "avg(nginx_ingress_controller_success{controller_pod=~\"$controller\",controller_class=~\"$controller_class\",controller_namespace=~\"$namespace\"})",
+          "expr": "avg(irate(nginx_ingress_controller_success{controller_pod=~\"$controller\",controller_class=~\"$controller_class\",controller_namespace=~\"$namespace\"}[1m])) * 60",
           "format": "time_series",
-          "instant": true,
+          "instant": false,
           "intervalFactor": 1,
           "refId": "A",
           "step": 4
@@ -392,7 +392,7 @@
           "value": "null"
         }
       ],
-      "valueName": "avg"
+      "valueName": "total"
     },
     {
       "cacheTimeout": null,
@@ -403,7 +403,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "$datasource",
+      "datasource": "${DS_PROMETHEUS}",
       "decimals": 0,
       "format": "none",
       "gauge": {
@@ -483,7 +483,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": "${DS_PROMETHEUS}",
       "decimals": 2,
       "editable": true,
       "error": false,
@@ -530,7 +530,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "round(sum(irate(nginx_ingress_controller_nginx_process_requests_total{controller_pod=~\"$controller\",controller_class=~\"$controller_class\",controller_namespace=~\"$namespace\",ingress=~\"$ingress\"}[2m])) by (ingress), 0.001)",
+          "expr": "round(sum(irate(nginx_ingress_controller_requests{controller_pod=~\"$controller\",controller_class=~\"$controller_class\",controller_namespace=~\"$namespace\",ingress=~\"$ingress\"}[2m])) by (ingress), 0.001)",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -593,7 +593,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": "${DS_PROMETHEUS}",
       "decimals": 2,
       "editable": false,
       "error": false,
@@ -637,7 +637,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(nginx_ingress_controller_nginx_process_requests_total{controller_pod=~\"$controller\",controller_class=~\"$controller_class\",namespace=~\"$namespace\",ingress=~\"$ingress\",status!~\"[4-5].*\"}[2m])) by (ingress) / sum(rate(nginx_ingress_controller_nginx_process_requests_total{controller_pod=~\"$controller\",controller_class=~\"$controller_class\",namespace=~\"$namespace\",ingress=~\"$ingress\"}[2m])) by (ingress)",
+          "expr": "sum(rate(nginx_ingress_controller_requests{controller_pod=~\"$controller\",controller_class=~\"$controller_class\",namespace=~\"$namespace\",ingress=~\"$ingress\",status!~\"[4-5].*\"}[2m])) by (ingress) / sum(rate(nginx_ingress_controller_requests{controller_pod=~\"$controller\",controller_class=~\"$controller_class\",namespace=~\"$namespace\",ingress=~\"$ingress\"}[2m])) by (ingress)",
           "format": "time_series",
           "instant": false,
           "interval": "10s",
@@ -694,7 +694,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": "${DS_PROMETHEUS}",
       "decimals": 2,
       "editable": true,
       "error": false,
@@ -737,7 +737,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum (irate (nginx_ingress_controller_nginx_process_read_bytes_total{controller_pod=~\"$controller\",controller_class=~\"$controller_class\",controller_namespace=~\"$namespace\"}[2m]))",
+          "expr": "sum (irate (nginx_ingress_controller_request_size_sum{controller_pod=~\"$controller\",controller_class=~\"$controller_class\",controller_namespace=~\"$namespace\"}[2m]))",
           "format": "time_series",
           "instant": false,
           "interval": "10s",
@@ -748,7 +748,7 @@
           "step": 10
         },
         {
-          "expr": "- sum (irate (nginx_ingress_controller_nginx_process_write_bytes_total{controller_pod=~\"$controller\",controller_class=~\"$controller_class\",controller_namespace=~\"$namespace\"}[2m]))",
+          "expr": "- sum (irate (nginx_ingress_controller_response_size_sum{controller_pod=~\"$controller\",controller_class=~\"$controller_class\",controller_namespace=~\"$namespace\"}[2m]))",
           "format": "time_series",
           "hide": false,
           "interval": "10s",
@@ -810,7 +810,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": "${DS_PROMETHEUS}",
       "decimals": 2,
       "editable": false,
       "error": false,
@@ -912,7 +912,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": "${DS_PROMETHEUS}",
       "decimals": 3,
       "editable": false,
       "error": false,
@@ -954,7 +954,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum (rate (nginx_ingress_controller_nginx_process_cpu_seconds_total{controller_pod=~\"$controller\",controller_class=~\"$controller_class\",controller_namespace=~\"$namespace\"}[2m])) ",
+          "expr": "avg (rate (nginx_ingress_controller_nginx_process_cpu_seconds_total{controller_pod=~\"$controller\",controller_class=~\"$controller_class\",controller_namespace=~\"$namespace\"}[2m])) ",
           "format": "time_series",
           "interval": "10s",
           "intervalFactor": 1,
@@ -1015,7 +1015,7 @@
     },
     {
       "columns": [],
-      "datasource": "$datasource",
+      "datasource": "${DS_PROMETHEUS}",
       "fontSize": "100%",
       "gridPos": {
         "h": 8,
@@ -1209,7 +1209,7 @@
           "refId": "E"
         },
         {
-          "expr": "sum(irate(nginx_ingress_controller_nginx_process_requests_total{ingress!=\"\",controller_pod=~\"$controller\",controller_class=~\"$controller_class\",controller_namespace=~\"$namespace\",ingress=~\"$ingress\"}[2m])) by (ingress)",
+          "expr": "sum(irate(nginx_ingress_controller_request_size_sum{ingress!=\"\",controller_pod=~\"$controller\",controller_class=~\"$controller_class\",controller_namespace=~\"$namespace\",ingress=~\"$ingress\"}[2m])) by (ingress)",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -1240,7 +1240,7 @@
           "value": "current"
         }
       ],
-      "datasource": "$datasource",
+      "datasource": "${DS_PROMETHEUS}",
       "fontSize": "100%",
       "gridPos": {
         "h": 8,
@@ -1323,20 +1323,13 @@
   "templating": {
     "list": [
       {
-        "current": {
-          "text": "Prometheus",
-          "value": "Prometheus"
-        },
         "hide": 0,
-        "includeAll": false,
-        "label": null,
-        "multi": false,
-        "name": "datasource",
+        "label": "datasource",
+        "name": "DS_PROMETHEUS",
         "options": [],
         "query": "prometheus",
         "refresh": 1,
         "regex": "",
-        "skipUrlSync": false,
         "type": "datasource"
       },
       {
@@ -1345,7 +1338,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "$datasource",
+        "datasource": "${DS_PROMETHEUS}",
         "hide": 0,
         "includeAll": true,
         "label": "Namespace",
@@ -1368,7 +1361,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "$datasource",
+        "datasource": "${DS_PROMETHEUS}",
         "hide": 0,
         "includeAll": true,
         "label": "Controller Class",
@@ -1391,7 +1384,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "$datasource",
+        "datasource": "${DS_PROMETHEUS}",
         "hide": 0,
         "includeAll": true,
         "label": "Controller",
@@ -1415,14 +1408,14 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "$datasource",
+        "datasource": "${DS_PROMETHEUS}",
         "hide": 0,
         "includeAll": true,
         "label": "Ingress",
         "multi": false,
         "name": "ingress",
         "options": [],
-        "query": "label_values(nginx_ingress_controller_nginx_process_requests_total{namespace=~\"$namespace\",controller_class=~\"$controller_class\",controller=~\"$controller\"}, ingress) ",
+        "query": "label_values(nginx_ingress_controller_requests{namespace=~\"$namespace\",controller_class=~\"$controller_class\",controller_pod=~\"$controller\"}, ingress) ",
         "refresh": 1,
         "regex": "",
         "sort": 2,
