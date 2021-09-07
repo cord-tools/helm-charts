@@ -1,6 +1,6 @@
 # cord-api-v2
 
-![Version: 1.0.0-rc.2](https://img.shields.io/badge/Version-1.0.0--rc.2-informational?style=flat-square) ![AppVersion: 1.0.0-rc.1](https://img.shields.io/badge/AppVersion-1.0.0--rc.1-informational?style=flat-square)
+![Version: 1.0.0-rc.3](https://img.shields.io/badge/Version-1.0.0--rc.3-informational?style=flat-square) ![AppVersion: 1.0.0-rc.1](https://img.shields.io/badge/AppVersion-1.0.0--rc.1-informational?style=flat-square)
 
 Authentication and authorization service for Cord Tools
 
@@ -74,5 +74,8 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | securityContext | object | `{}` |  |
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |
+| serviceAccount.annotations | object | `{}` |  |
+| serviceAccount.create | bool | `true` |  |
+| serviceAccount.name | string | `""` |  |
 | serviceMonitor.enabled | bool | `false` |  |
 | tolerations | list | `[]` |  |
