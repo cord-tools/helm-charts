@@ -21,6 +21,7 @@ spec:
       labels:
         {{- include "cord-api-v2.selectorLabels" . | nindent 8 }}
     spec:
+      serviceAccountName: {{ include "cord-api-v2.serviceAccountName" . }}
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}

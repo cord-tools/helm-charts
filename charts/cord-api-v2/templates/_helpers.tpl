@@ -59,3 +59,10 @@ app.kubernetes.io/name: {{ include "cord-api-v2.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
+{{- define "cord-api-v2.serviceAccountName" -}}
+{{- if .Values.serviceAccount.create -}}
+    {{ default (include "cord-api-v2.fullname" .) .Values.serviceAccount.name }}
+{{- else -}}
+    {{ default "default" .Values.serviceAccount.name }}
+{{- end -}}
+{{- end -}}
