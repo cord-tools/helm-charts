@@ -1,7 +1,11 @@
 {{- if .Values.packageScheduleRunner.enabled }}
 {{- $labels := include "cord-api.labels" . -}}
 {{- $args := .Values.packageScheduleRunnerArgs -}}
+{{- if semverCompare ">=1.21-0" .Capabilities.KubeVersion.GitVersion -}}
 apiVersion: batch/v1
+{{- else -}}
+apiVersion: batch/v1beta1
+{{- end }}
 kind: CronJobList
 items:
   {{- range $schedule := .Values.packageScheduleRunner.frequencies }}
