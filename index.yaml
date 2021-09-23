@@ -763,6 +763,24 @@ entries:
     version: 1.0.0-rc.0
   cord-ui:
   - apiVersion: v2
+    appVersion: 1.0.0-rc.2
+    created: "2021-09-23T20:03:41.24365941Z"
+    description: The UI for Cord Tools
+    digest: 046dce86ecd1c0027c08c8983c1e7b5ff9fca45cb60cdbf51f34deaf2d980be6
+    home: https://github.com/cord-tools/helm-charts
+    icon: https://irp.cdn-website.com/27aeb91f/dms3rep/multi/Cord-Logo-Stacked-57x57.png
+    maintainers:
+    - email: hello@hoodoo.digital
+      name: hoodoo-digital
+      url: https://hoodoo.digital
+    name: cord-ui
+    sources:
+    - https://github.com/cord-tools/cord-ui
+    type: application
+    urls:
+    - https://github.com/cord-tools/helm-charts/releases/download/cord-ui-1.0.0-rc.3/cord-ui-1.0.0-rc.3.tgz
+    version: 1.0.0-rc.3
+  - apiVersion: v2
     appVersion: 1.0.0-rc.1
     created: "2021-08-23T19:10:57.298696764Z"
     description: The UI for Cord Tools
