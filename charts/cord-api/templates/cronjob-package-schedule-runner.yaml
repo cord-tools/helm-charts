@@ -1,13 +1,21 @@
 {{- if .Values.packageScheduleRunner.enabled }}
 {{- $labels := include "cord-api.labels" . -}}
 {{- $args := .Values.packageScheduleRunnerArgs -}}
+{{- if semverCompare ">=1.21-0" .Capabilities.KubeVersion.GitVersion -}}
 apiVersion: batch/v1
+{{- else -}}
+apiVersion: batch/v1beta1
+{{- end }}
 kind: CronJobList
 items:
   {{- range $schedule := .Values.packageScheduleRunner.frequencies }}
   {{- $name := printf "%s-%s-pkg-runner" (include "cord-api.fullname" $) $schedule.frequency | trunc 52 }}
   {{- $selectorName := printf "%s-%s-pkg-runner" (include "cord-api.name" $) $schedule.frequency | trunc 52 }}
+  {{ if semverCompare ">=1.21-0" $.Capabilities.KubeVersion.GitVersion -}}
   - apiVersion: batch/v1
+  {{- else -}}
+  - apiVersion: batch/v1beta1
+  {{- end }}
     kind: CronJob
     metadata:
       name: {{ $name }}
