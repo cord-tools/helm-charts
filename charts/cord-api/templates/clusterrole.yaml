@@ -17,6 +17,13 @@ rules:
       - delete
   - apiGroups:
      - ""
+    resources: 
+      - pods
+    verbs:
+      - list
+      - patch
+  - apiGroups:
+     - ""
      - apps
      - batch
     resources:
