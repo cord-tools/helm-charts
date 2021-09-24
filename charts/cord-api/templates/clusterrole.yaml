@@ -16,16 +16,16 @@ rules:
       - create
       - delete
   - apiGroups:
-     - ""
+      - ""
     resources: 
       - pods
     verbs:
       - list
       - patch
   - apiGroups:
-     - ""
-     - apps
-     - batch
+      - ""
+      - apps
+      - batch
     resources:
       - configmaps
       - secrets
