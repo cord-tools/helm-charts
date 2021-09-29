@@ -21,7 +21,13 @@ rules:
       - pods
     verbs:
       - list
+  - apiGroups:
+      - ""
+    resources: 
+      - pods/status
+    verbs:
       - patch
+      - list
   - apiGroups:
       - ""
       - apps
