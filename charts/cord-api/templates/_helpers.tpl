@@ -75,24 +75,38 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 env:
   - name: BACKUP_SYNC_IMAGE
     value: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+  {{- if not .Values.config.LOGS_URL }}
   - name: LOGS_URL
     {{- if .Values.loki.enabled }}
     value: "http://{{ include "cord-api.loki.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.loki.config.server.http_listen_port }}"
     {{- else }}
     value: ""
     {{- end }}
+  {{- end }}
+  {{- if not .Values.config.API_V2_URL }}
   - name: API_V2_URL
     value: "http://{{ include "cord-api.cord-api-v2.fullname" . }}.{{ .Release.Namespace }}"
-  - name: INTERNAL_API_URL 
+  {{- end }}
+  {{- if not .Values.config.INTERNAL_API_URL }}
+  - name: INTERNAL_API_URL
     value: "http://{{ include "cord-api.fullname" . }}.{{ .Release.Namespace }}:8080"
+  {{- end }}
+  {{- if not .Values.config.DB_HOST }}
   - name: DB_HOST
     value: {{ include "cord-api.mongodb.fullname" . | quote }}
+  {{- end }}
+  {{- if not .Values.config.DB_PORT }}
   - name: DB_PORT
     value: {{ .Values.mongodb.port | default "27017" | quote }}
+  {{- end }}
+  {{- if not .Values.config.DB_NAME }}
   - name: DB_NAME
     value: {{ .Values.mongodb.auth.database | default "cordtools" | quote }}
+  {{- end }}
+  {{- if not .Values.config.DB_USERNAME }}
   - name: DB_USERNAME
     value: {{ .Values.mongodb.auth.username | default "cordtools-user" | quote }}
+  {{- end }}
 {{- range $key, $value := .Values.config }}
   - name: {{ $key | quote }}
     value: {{ $value | quote }}
