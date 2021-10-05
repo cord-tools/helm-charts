@@ -16,9 +16,22 @@ rules:
       - create
       - delete
   - apiGroups:
-     - ""
-     - apps
-     - batch
+      - ""
+    resources: 
+      - pods
+    verbs:
+      - list
+  - apiGroups:
+      - ""
+    resources: 
+      - pods/status
+    verbs:
+      - patch
+      - list
+  - apiGroups:
+      - ""
+      - apps
+      - batch
     resources:
       - configmaps
       - secrets
