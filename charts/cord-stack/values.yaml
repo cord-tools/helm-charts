@@ -225,7 +225,8 @@ cord-api-v2:
     # AZURE_CLIENT_SECRET: ""
 
     # Private key to sign JWTs with
-    # can be generated with: ssh-keygen -t rsa -b 4096 -f key-name.key
+    # can be generated with: openssl genrsa -out <key-name.key> <bit-size>
+    # e.g. openssl genrsa -out cordtools-jwt.key 4096
     JWT_SIGNING_KEY: |-
       changeme
 
