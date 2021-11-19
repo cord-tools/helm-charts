@@ -1,6 +1,6 @@
 # cord-api
 
-![Version: 1.0.0-rc.10](https://img.shields.io/badge/Version-1.0.0--rc.10-informational?style=flat-square) ![AppVersion: 1.0.0-rc.6](https://img.shields.io/badge/AppVersion-1.0.0--rc.6-informational?style=flat-square)
+![Version: 1.0.0-rc.11](https://img.shields.io/badge/Version-1.0.0--rc.11-informational?style=flat-square) ![AppVersion: 1.0.0-rc.6](https://img.shields.io/badge/AppVersion-1.0.0--rc.6-informational?style=flat-square)
 
 The API for Cord Tools
 
