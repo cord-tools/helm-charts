@@ -1,12 +1,12 @@
 apiVersion: v2
-appVersion: "1.0.0-rc.5"
+appVersion: "1.0.0-rc.6"
 description: The API for Cord Tools
 name: cord-api
-version: "1.0.0-rc.9"
+version: "1.0.0-rc.10"
 icon: https://irp.cdn-website.com/27aeb91f/dms3rep/multi/Cord-Logo-Stacked-57x57.png
 home: https://github.com/cord-tools/helm-charts
 sources:
-  - https://github.com/cord-tools/cord-ui
+  - https://github.com/cord-tools/cord-api
 maintainers:
   - name: hoodoo-digital
     url: https://hoodoo.digital
