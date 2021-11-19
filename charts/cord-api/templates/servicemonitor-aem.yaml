@@ -14,4 +14,8 @@ spec:
   endpoints:
     - port: prometheus-metrics
       interval: 1m
+  podTargetLabels:
+    - cordToolsAccount
+    - cordToolsEnvironment
+    - cordToolsInstanceType
 {{- end }}
