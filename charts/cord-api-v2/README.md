@@ -1,6 +1,6 @@
 # cord-api-v2
 
-![Version: 1.0.0-rc.4](https://img.shields.io/badge/Version-1.0.0--rc.4-informational?style=flat-square) ![AppVersion: 1.0.0-rc.1](https://img.shields.io/badge/AppVersion-1.0.0--rc.1-informational?style=flat-square)
+![Version: 1.0.0-rc.5](https://img.shields.io/badge/Version-1.0.0--rc.5-informational?style=flat-square) ![AppVersion: 1.0.0-rc.2](https://img.shields.io/badge/AppVersion-1.0.0--rc.2-informational?style=flat-square)
 
 Authentication and authorization service for Cord Tools
 
