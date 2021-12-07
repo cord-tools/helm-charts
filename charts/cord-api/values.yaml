@@ -97,7 +97,7 @@ config:
   BASE_IMAGE_REPOSITORY: "public.ecr.aws/cord-tools/base"
 
   # Docker image to use for dispatcher pods
-  DISPATCHER_IMAGE: "public.ecr.aws/cord-tools/dispatcher:4.3.3"
+  DISPATCHER_IMAGE: "public.ecr.aws/cord-tools/dispatcher:4.3.4"
 
   # Port to use for dispatcher
   # DISPATCHER_PORT: "80"

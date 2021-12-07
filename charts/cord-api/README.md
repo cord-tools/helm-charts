@@ -1,6 +1,6 @@
 # cord-api
 
-![Version: 1.0.0-rc.11](https://img.shields.io/badge/Version-1.0.0--rc.11-informational?style=flat-square) ![AppVersion: 1.0.0-rc.6](https://img.shields.io/badge/AppVersion-1.0.0--rc.6-informational?style=flat-square)
+![Version: 1.0.0-rc.12](https://img.shields.io/badge/Version-1.0.0--rc.12-informational?style=flat-square) ![AppVersion: 1.0.0-rc.7](https://img.shields.io/badge/AppVersion-1.0.0--rc.7-informational?style=flat-square)
 
 The API for Cord Tools
 
@@ -45,7 +45,7 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | config.BASE_IMAGE_REPOSITORY | string | `"public.ecr.aws/cord-tools/base"` |  |
 | config.BUCKET_URL | string | `"file:///cordtools-files"` |  |
 | config.BUILD_IMAGE_PULL_SECRETS | string | `""` |  |
-| config.DISPATCHER_IMAGE | string | `"public.ecr.aws/cord-tools/dispatcher:4.3.3"` |  |
+| config.DISPATCHER_IMAGE | string | `"public.ecr.aws/cord-tools/dispatcher:4.3.4"` |  |
 | config.ENVIRONMENT_IMAGE_PULL_SECRETS | string | `""` |  |
 | config.ENVIRONMENT_STORAGE_CLASS | string | `""` |  |
 | config.GITHUB_AUTH_URL | string | `"https://github.com/login/oauth"` |  |
