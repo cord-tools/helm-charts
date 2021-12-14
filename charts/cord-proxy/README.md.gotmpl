@@ -16,4 +16,16 @@ Add the following repo to use the chart:
 helm repo add cord-tools https://cord-tools.github.io/helm-charts
 ```
 
+## Install
+
+You can deploy cord-proxy with the following command:
+
+```console
+helm upgrade --install cord-proxy cord-tools/cord-proxy
+```
+
+This command will:
+* if cord-proxy is not installed, install it
+* if cord-proxy is already installed, upgrade it
+
 {{ template "chart.valuesSection" . }}
