@@ -1,6 +1,6 @@
 # cord-api
 
-![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square) ![AppVersion: 1.0.1](https://img.shields.io/badge/AppVersion-1.0.1-informational?style=flat-square)
+![Version: 1.1.0](https://img.shields.io/badge/Version-1.1.0-informational?style=flat-square) ![AppVersion: 1.1.0](https://img.shields.io/badge/AppVersion-1.1.0-informational?style=flat-square)
 
 The API for Cord Tools
 
@@ -88,6 +88,13 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | mongodb.persistence.enabled | bool | `true` |  |
 | mongodb.persistence.size | string | `"8Gi"` |  |
 | nameOverride | string | `""` |  |
+| newArchiveRetriever.afterDate | string | `"2022-02-04"` | Only find archives that were created after this date. This should be a recent date so that every archive in the AEM archive repository isn't downloaded |
+| newArchiveRetriever.archivesAddress | string | `"https://downloads.stage.cord.tools/"` | Address of the AEM Archive repository |
+| newArchiveRetriever.downloadCloudSDK | bool | `false` | Download new cloud SDK versions, e.g. 2022.2.6276.20220205T222203Z-220100 |
+| newArchiveRetriever.downloadOnPrem | bool | `true` | Download new on prem AEM versions, e.g. 6.5.11 |
+| newArchiveRetriever.enabled | bool | `true` | Enable the cron job to find and save new archives from the AEM Archive repository |
+| newArchiveRetriever.schedule | string | `"0 7 * * *"` | Schedule to run the cron job on |
+| newArchiveRetrieverArgs | string | `"- ./cord-api retrieveNewArchives --address={{ .Values.newArchiveRetriever.archivesAddress | quote }} --after={{ .Values.newArchiveRetriever.afterDate | quote }} --download-on-prem={{ .Values.newArchiveRetriever.downloadOnPrem | quote }} --download-cloud-sdk={{ .Values.newArchiveRetriever.downloadCloudSDK | quote }}"` | The command to run to retrieve new archives in a cronjob. It must be a string since it is a template. WARNING: Only change if you know what you are doing |
 | nodeSelector | object | `{}` |  |
 | packageScheduleRunner.enabled | bool | `true` |  |
 | packageScheduleRunner.frequencies[0].frequency | string | `"daily"` |  |
