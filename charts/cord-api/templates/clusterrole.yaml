@@ -21,6 +21,7 @@ rules:
       - pods
     verbs:
       - list
+      - delete
   - apiGroups:
       - ""
     resources: 
