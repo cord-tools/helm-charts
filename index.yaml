@@ -795,6 +795,47 @@ entries:
     version: 1.0.0-rc.0
   cord-stack:
   - apiVersion: v2
+    created: "2022-02-28T22:10:57.532342528Z"
+    dependencies:
+    - condition: cord-api.enabled
+      name: cord-api
+      repository: https://cord-tools.github.io/helm-charts
+      version: 1.1.0
+    - condition: cord-api-v2.enabled
+      name: cord-api-v2
+      repository: https://cord-tools.github.io/helm-charts
+      version: 1.0.0
+    - condition: cord-ui.enabled
+      name: cord-ui
+      repository: https://cord-tools.github.io/helm-charts
+      version: 1.1.0
+    - condition: cord-proxy.enabled
+      name: cord-proxy
+      repository: https://cord-tools.github.io/helm-charts
+      version: 1.1.0
+    - condition: ingress-nginx.enabled
+      name: ingress-nginx
+      repository: https://kubernetes.github.io/ingress-nginx
+      version: ~3.22.0
+    - condition: kube-prometheus-stack.enabled
+      name: kube-prometheus-stack
+      repository: https://prometheus-community.github.io/helm-charts
+      version: ~13.3.0
+    description: The fullstack of Cord Tools
+    digest: 8a2fda2be270f6455dce7193b7d722ce858adafdaa5f71634e68d9a60b48b4a8
+    home: https://github.com/cord-tools/helm-charts
+    icon: https://irp.cdn-website.com/27aeb91f/dms3rep/multi/Cord-Logo-Stacked-57x57.png
+    maintainers:
+    - email: hello@hoodoo.digital
+      name: hoodoo-digital
+      url: https://hoodoo.digital
+    name: cord-stack
+    sources:
+    - https://github.com/cord-tools/
+    urls:
+    - https://github.com/cord-tools/helm-charts/releases/download/cord-stack-1.1.0/cord-stack-1.1.0.tgz
+    version: 1.1.0
+  - apiVersion: v2
     created: "2022-02-16T23:40:21.692091176Z"
     dependencies:
     - condition: cord-api.enabled
