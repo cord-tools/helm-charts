@@ -1,7 +1,7 @@
 apiVersion: v2
 description: The fullstack of Cord Tools
 name: cord-stack
-version: "1.0.1"
+version: "1.1.0"
 icon: https://irp.cdn-website.com/27aeb91f/dms3rep/multi/Cord-Logo-Stacked-57x57.png
 home: https://github.com/cord-tools/helm-charts
 sources:
@@ -12,7 +12,7 @@ maintainers:
     email: hello@hoodoo.digital
 dependencies:
   - name: cord-api
-    version: "1.0.1"
+    version: "1.1.0"
     condition: cord-api.enabled
     repository: https://cord-tools.github.io/helm-charts
   - name: cord-api-v2
@@ -20,11 +20,11 @@ dependencies:
     condition: cord-api-v2.enabled
     repository: https://cord-tools.github.io/helm-charts
   - name: cord-ui
-    version: "1.0.1"
+    version: "1.1.0"
     condition: cord-ui.enabled
     repository: https://cord-tools.github.io/helm-charts
   - name: cord-proxy
-    version: "1.0.0"
+    version: "1.1.0"
     condition: cord-proxy.enabled
     repository: https://cord-tools.github.io/helm-charts
   - name: ingress-nginx

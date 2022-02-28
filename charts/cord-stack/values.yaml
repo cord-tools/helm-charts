@@ -24,6 +24,31 @@ cord-api:
     enabled: false
     schedule: "0 7 * * *"
     days: 30
+  # Cron job to build packages on a schedule
+  # There are currently two available frequencies: daily and weekly
+  #  packageScheduleRunner:
+  #    enabled: true
+  #    # number of packages to build concurrently
+  #    workers: 5
+  #    frequencies:
+  #      - frequency: daily
+  #        schedule: "0 4 * * *"
+  #      - frequency: weekly
+  #        schedule: "0 5 * * 0"
+  # Cron job to find and save new archives from the AEM Archive repository
+  #  newArchiveRetriever:
+  #    # -- Enable the cron job to find and save new archives from the AEM Archive repository
+  #    enabled: true
+  #    # -- Schedule to run the cron job on
+  #    schedule: "0 7 * * *"
+  #    # -- Address of the AEM Archive repository
+  #    archivesAddress: https://downloads.stage.cord.tools/
+  #    # -- Only find archives that were created after this date. This should be a recent date so that every archive in the AEM archive repository isn't downloaded
+  #    afterDate: "2022-02-04"
+  #    # -- Download new on prem AEM versions, e.g. 6.5.11
+  #    downloadOnPrem: true
+  #    # -- Download new cloud SDK versions, e.g. 2022.2.6276.20220205T222203Z-220100
+  #    downloadCloudSDK: false
   localFileStore:
     enabled: true
     # Volume will hold packages and backups
