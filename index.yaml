@@ -668,6 +668,24 @@ entries:
     version: 1.0.0-rc.0
   cord-proxy:
   - apiVersion: v2
+    appVersion: 1.1.0
+    created: "2022-02-28T21:59:57.368591681Z"
+    description: Forwards requests to AEM environments
+    digest: 59539c0e059de8c0fa47fc94a9ae21340a4e81cdfc1dc51d4182fc9a5173c7ba
+    home: https://github.com/cord-tools/helm-charts
+    icon: https://irp.cdn-website.com/27aeb91f/dms3rep/multi/Cord-Logo-Stacked-57x57.png
+    maintainers:
+    - email: hello@hoodoo.digital
+      name: hoodoo-digital
+      url: https://hoodoo.digital
+    name: cord-proxy
+    sources:
+    - https://github.com/cord-tools/cord-proxy
+    type: application
+    urls:
+    - https://github.com/cord-tools/helm-charts/releases/download/cord-proxy-1.1.0/cord-proxy-1.1.0.tgz
+    version: 1.1.0
+  - apiVersion: v2
     appVersion: 1.0.0
     created: "2022-01-24T17:34:15.308682479Z"
     description: Forwards requests to AEM environments
