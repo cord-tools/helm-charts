@@ -1,0 +1,43 @@
+{{- if .Values.newArchiveRetriever.enabled }}
+{{- if semverCompare ">=1.21-0" .Capabilities.KubeVersion.GitVersion -}}
+apiVersion: batch/v1
+{{- else -}}
+apiVersion: batch/v1beta1
+{{- end }}
+kind: CronJob
+metadata:
+  name: {{ include "cord-api.fullname" . }}-new-archive-retriever
+  labels:
+    {{- include "cord-api.labels" . | nindent 4 }}
+spec:
+  schedule: {{ .Values.newArchiveRetriever.schedule }}
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+          {{- include "cord-api.selectorLabels" . | nindent 12 }}
+          annotations:
+            checksum/config: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
+        spec:
+          restartPolicy: Never
+          {{- with .Values.imagePullSecrets }}
+          imagePullSecrets:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          containers:
+            - name: {{ .Chart.Name }}
+              securityContext:
+              {{- toYaml .Values.securityContext | nindent 16 }}
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              args:
+                {{- tpl .Values.newArchiveRetrieverArgs . | nindent 16 }}
+              command:
+                - /bin/bash
+                - -c
+              {{- include "cord-api.envVars" . | nindent 14 }}
+{{- end }}

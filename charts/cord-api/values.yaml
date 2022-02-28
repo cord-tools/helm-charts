@@ -35,6 +35,21 @@ packageScheduleRunner:
     - frequency: weekly
       schedule: "0 5 * * 0"
 
+# Cron job to find and save new archives from the AEM Archive repository
+newArchiveRetriever:
+  # -- Enable the cron job to find and save new archives from the AEM Archive repository
+  enabled: true
+  # -- Schedule to run the cron job on
+  schedule: "0 7 * * *"
+  # -- Address of the AEM Archive repository
+  archivesAddress: https://downloads.stage.cord.tools/
+  # -- Only find archives that were created after this date. This should be a recent date so that every archive in the AEM archive repository isn't downloaded
+  afterDate: "2022-02-04"
+  # -- Download new on prem AEM versions, e.g. 6.5.11
+  downloadOnPrem: true
+  # -- Download new cloud SDK versions, e.g. 2022.2.6276.20220205T222203Z-220100
+  downloadCloudSDK: false
+
 # The user to use for internal calls to the cord-api
 # internalAPIUser: "user"
 # The password to use for internal calls to the cord-api
@@ -275,3 +290,9 @@ backupCleanerArgs: |-
 # WARNING: Only change if you know what you are doing
 packageScheduleRunnerArgs: |-
   - ./cord-api package-schedule-runner --frequency={{ .schedule.frequency }} --workers={{ .Values.packageScheduleRunner.workers }}
+
+# -- The command to run to retrieve new archives in a cronjob.
+# It must be a string since it is a template.
+# WARNING: Only change if you know what you are doing
+newArchiveRetrieverArgs: |-
+  - ./cord-api retrieveNewArchives --address={{ .Values.newArchiveRetriever.archivesAddress | quote }} --after={{ .Values.newArchiveRetriever.afterDate | quote }} --download-on-prem={{ .Values.newArchiveRetriever.downloadOnPrem | quote }} --download-cloud-sdk={{ .Values.newArchiveRetriever.downloadCloudSDK | quote }}
