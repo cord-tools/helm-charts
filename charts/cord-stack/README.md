@@ -1,6 +1,6 @@
 # cord-stack
 
-![Version: 1.1.4](https://img.shields.io/badge/Version-1.1.4-informational?style=flat-square)
+![Version: 1.1.5](https://img.shields.io/badge/Version-1.1.5-informational?style=flat-square)
 
 The fullstack of Cord Tools
 
@@ -15,7 +15,7 @@ The fullstack of Cord Tools
 | https://cord-tools.github.io/helm-charts | cord-api | 1.1.4 |
 | https://cord-tools.github.io/helm-charts | cord-api-v2 | 1.0.0 |
 | https://cord-tools.github.io/helm-charts | cord-proxy | 1.1.0 |
-| https://cord-tools.github.io/helm-charts | cord-ui | 1.1.0 |
+| https://cord-tools.github.io/helm-charts | cord-ui | 1.2.0 |
 | https://kubernetes.github.io/ingress-nginx | ingress-nginx | ~3.22.0 |
 | https://prometheus-community.github.io/helm-charts | kube-prometheus-stack | ~13.3.0 |
 
