@@ -1,3 +1,7 @@
 /charts/*/charts
 tanka/charts
 tanka/vendor
+
+# vs code specific
+configurationCache.log
+settings.json
