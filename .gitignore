@@ -5,3 +5,4 @@ tanka/vendor
 # vs code specific
 configurationCache.log
 settings.json
+/.vscode
