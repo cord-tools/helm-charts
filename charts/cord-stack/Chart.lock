@@ -1,7 +1,7 @@
 dependencies:
 - name: cord-api
   repository: https://cord-tools.github.io/helm-charts
-  version: 1.2.0
+  version: 1.1.4
 - name: cord-api-v2
   repository: https://cord-tools.github.io/helm-charts
   version: 1.0.0
