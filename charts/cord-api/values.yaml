@@ -235,6 +235,10 @@ promtail:
   serviceMonitor:
     enabled: false
   config:
+    # publish data to loki
+    clients:
+    - url: http://loki-gateway/loki/api/v1/push
+      tenant_id: 1
     snippets:
       common:
         - action: replace
@@ -261,19 +265,35 @@ promtail:
             - __meta_kubernetes_pod_container_name
           target_label: container
         - action: replace
-          source_labels:
-            - __meta_kubernetes_pod_label_name
-          target_label: name
-        - action: labelmap
-          regex: __meta_kubernetes_pod_label_cordTools(.+)
-          replacement: cordTools${1}
-        - action: replace
           replacement: /var/log/pods/*$1/*.log
           separator: /
           source_labels:
             - __meta_kubernetes_pod_uid
             - __meta_kubernetes_pod_container_name
           target_label: __path__
+        - action: replace
+          replacement: /var/log/pods/*$1/*.log
+          regex: true/(.*)
+          separator: /
+          source_labels:
+            - __meta_kubernetes_pod_annotationpresent_kubernetes_io_config_hash
+            - __meta_kubernetes_pod_annotation_kubernetes_io_config_hash
+            - __meta_kubernetes_pod_container_name
+          target_label: __path__
+
+# https://github.com/grafana/loki/issues/7081
+grafana:
+  datasources:
+      datasources.yaml:
+        apiVersion: 1
+        datasources:
+        - name: Loki
+          type: loki
+          url: http://loki:3100
+          jsonData:
+            httpHeaderName1: 'X-Scope-OrgID'
+          secureJsonData:
+            httpHeaderValue1: '1'
 
 # The command to run to trigger backups in a cronjob
 # WARNING: Only change if you know what you are doing
