@@ -284,9 +284,9 @@ promtail:
 # https://github.com/grafana/loki/issues/7081
 grafana:
   datasources:
-      datasources.yaml:
-        apiVersion: 1
-        datasources:
+    datasources.yaml:
+      apiVersion: 1
+      datasources:
         - name: Loki
           type: loki
           url: http://loki:3100
