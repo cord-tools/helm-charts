@@ -219,8 +219,8 @@ mongodb:
 # # Log storage
 loki:
   enabled: true
-  # server:
-  #   http_listen_port: 3100
+  server:
+    http_listen_port: 3100
   persistence:
     enabled: false
     size: 10Gi
