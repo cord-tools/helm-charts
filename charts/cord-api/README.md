@@ -13,8 +13,8 @@ The API for Cord Tools
 | Repository | Name | Version |
 |------------|------|---------|
 | https://charts.bitnami.com/bitnami | mongodb | ~13.6.0 |
-| https://grafana.github.io/helm-charts | loki | ~2.3.0 |
-| https://grafana.github.io/helm-charts | promtail | ~3.0.0 |
+| https://grafana.github.io/helm-charts | loki | ~3.8.2 |
+| https://grafana.github.io/helm-charts | promtail | ~6.7.4 |
 
 ## Chart Repo
 
@@ -57,12 +57,6 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | config.OAUTH_REDIRECT_URI | string | `"https://cordtools.local/oauth/authorize/package-tool"` |  |
 | config.WEB_APP_URL | string | `"https://cordtools.local/"` |  |
 | fullnameOverride | string | `""` |  |
-| grafana.datasources."datasources.yaml".apiVersion | int | `1` |  |
-| grafana.datasources."datasources.yaml".datasources[0].jsonData.httpHeaderName1 | string | `"X-Scope-OrgID"` |  |
-| grafana.datasources."datasources.yaml".datasources[0].name | string | `"Loki"` |  |
-| grafana.datasources."datasources.yaml".datasources[0].secureJsonData.httpHeaderValue1 | string | `"1"` |  |
-| grafana.datasources."datasources.yaml".datasources[0].type | string | `"loki"` |  |
-| grafana.datasources."datasources.yaml".datasources[0].url | string | `"http://loki:3100"` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"public.ecr.aws/cord-tools/cord-api"` |  |
 | image.tag | string | `""` |  |
@@ -79,10 +73,8 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | localFileStore.volumeSize | string | `"40Gi"` |  |
 | loki.chunk_store_config.max_look_back_period | string | `"720h"` |  |
 | loki.enabled | bool | `true` |  |
-| loki.server.http_listen_port | int | `3100` |  |
-| loki.storage_config.filesystem.block_volume_size | string | `"10Gi"` |  |
-| loki.storage_config.filesystem.directory | string | `"/data"` |  |
-| loki.storage_config.type | string | `"filesystem"` |  |
+| loki.persistence.enabled | bool | `false` |  |
+| loki.persistence.size | string | `"10Gi"` |  |
 | loki.table_manager.retention_deletes_enabled | bool | `true` |  |
 | loki.table_manager.retention_period | string | `"720h"` |  |
 | mongodb.auth.database | string | `"cordtools"` |  |
@@ -112,8 +104,6 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | packageScheduleRunnerArgs | string | `"- ./cord-api package-schedule-runner --frequency={{ .schedule.frequency }} --workers={{ .Values.packageScheduleRunner.workers }}"` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
-| promtail.config.clients[0].tenant_id | int | `1` |  |
-| promtail.config.clients[0].url | string | `"http://loki-gateway/loki/api/v1/push"` |  |
 | promtail.config.snippets.common[0].action | string | `"replace"` |  |
 | promtail.config.snippets.common[0].source_labels[0] | string | `"__meta_kubernetes_pod_node_name"` |  |
 | promtail.config.snippets.common[0].target_label | string | `"node_name"` |  |
@@ -133,19 +123,17 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | promtail.config.snippets.common[4].source_labels[0] | string | `"__meta_kubernetes_pod_container_name"` |  |
 | promtail.config.snippets.common[4].target_label | string | `"container"` |  |
 | promtail.config.snippets.common[5].action | string | `"replace"` |  |
-| promtail.config.snippets.common[5].replacement | string | `"/var/log/pods/*$1/*.log"` |  |
-| promtail.config.snippets.common[5].separator | string | `"/"` |  |
-| promtail.config.snippets.common[5].source_labels[0] | string | `"__meta_kubernetes_pod_uid"` |  |
-| promtail.config.snippets.common[5].source_labels[1] | string | `"__meta_kubernetes_pod_container_name"` |  |
-| promtail.config.snippets.common[5].target_label | string | `"__path__"` |  |
-| promtail.config.snippets.common[6].action | string | `"replace"` |  |
-| promtail.config.snippets.common[6].regex | string | `"true/(.*)"` |  |
-| promtail.config.snippets.common[6].replacement | string | `"/var/log/pods/*$1/*.log"` |  |
-| promtail.config.snippets.common[6].separator | string | `"/"` |  |
-| promtail.config.snippets.common[6].source_labels[0] | string | `"__meta_kubernetes_pod_annotationpresent_kubernetes_io_config_hash"` |  |
-| promtail.config.snippets.common[6].source_labels[1] | string | `"__meta_kubernetes_pod_annotation_kubernetes_io_config_hash"` |  |
-| promtail.config.snippets.common[6].source_labels[2] | string | `"__meta_kubernetes_pod_container_name"` |  |
-| promtail.config.snippets.common[6].target_label | string | `"__path__"` |  |
+| promtail.config.snippets.common[5].source_labels[0] | string | `"__meta_kubernetes_pod_label_name"` |  |
+| promtail.config.snippets.common[5].target_label | string | `"name"` |  |
+| promtail.config.snippets.common[6].action | string | `"labelmap"` |  |
+| promtail.config.snippets.common[6].regex | string | `"__meta_kubernetes_pod_label_cordTools(.+)"` |  |
+| promtail.config.snippets.common[6].replacement | string | `"cordTools${1}"` |  |
+| promtail.config.snippets.common[7].action | string | `"replace"` |  |
+| promtail.config.snippets.common[7].replacement | string | `"/var/log/pods/*$1/*.log"` |  |
+| promtail.config.snippets.common[7].separator | string | `"/"` |  |
+| promtail.config.snippets.common[7].source_labels[0] | string | `"__meta_kubernetes_pod_uid"` |  |
+| promtail.config.snippets.common[7].source_labels[1] | string | `"__meta_kubernetes_pod_container_name"` |  |
+| promtail.config.snippets.common[7].target_label | string | `"__path__"` |  |
 | promtail.enabled | bool | `true` |  |
 | promtail.serviceMonitor.enabled | bool | `false` |  |
 | rbac.create | bool | `true` |  |

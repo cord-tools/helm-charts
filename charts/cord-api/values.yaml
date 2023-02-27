@@ -213,25 +213,44 @@ mongodb:
     serviceMonitor:
       enabled: false
 
-# Log storage
+# https://stackoverflow.com/questions/71697241/promtail-is-not-able-to-send-logs-to-grafana
+# https://github.com/grafana/helm-charts/issues/1162
+# https://artifacthub.io/packages/helm/grafana/promtail
+# # Log storage
 loki:
   enabled: true
-  server:
-    http_listen_port: 3100
-  storage_config:
-    type: filesystem
-    filesystem:
-      directory: /data
-      block_volume_size: 10Gi
+  # server:
+  #   http_listen_port: 3100
+  persistence:
+    enabled: false
+    size: 10Gi
+  # storage_config:
+  #   type: filesystem
+  #   filesystem:
+  #     directory: /data
+  #     block_volume_size: 10Gi
   chunk_store_config:
     max_look_back_period: 720h
   table_manager:
     retention_deletes_enabled: true
     retention_period: 720h
-  config:
-    clients:
-      - url: http://loki.monitoring:3100/loki/api/v1/push
-        tenant_id: 1
+
+# loki:
+#   enabled: true
+#   persistence:
+#     enabled: false
+#     size: 10Gi
+#   serviceMonitor:
+#     enabled: false
+#   config:
+#     chunk_store_config:
+#       max_look_back_period: 720h
+#     table_manager:
+#       retention_deletes_enabled: true
+#       retention_period: 720h
+#     clients:
+#       - url: http://loki.monitoring:3100/loki/api/v1/push
+#         tenant_id: 1
 
 # Log collector
 promtail:
@@ -280,18 +299,18 @@ promtail:
           target_label: __path__
 
 # https://github.com/grafana/loki/issues/7081
-grafana:
-  datasources:
-    datasources.yaml:
-      apiVersion: 1
-      datasources:
-        - name: Loki
-          type: loki
-          url: http://loki:3100
-          jsonData:
-            httpHeaderName1: 'X-Scope-OrgID'
-          secureJsonData:
-            httpHeaderValue1: '1'
+# grafana:
+#   datasources:
+#     datasources.yaml:
+#       apiVersion: 1
+#       datasources:
+#         - name: Loki
+#           type: loki
+#           url: http://loki:3100
+#           jsonData:
+#             httpHeaderName1: 'X-Scope-OrgID'
+#           secureJsonData:
+#             httpHeaderValue1: '1'
 
 # The command to run to trigger backups in a cronjob
 # WARNING: Only change if you know what you are doing
