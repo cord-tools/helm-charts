@@ -32,8 +32,8 @@ jobs:
 
       - name: Set up chart-testing
         uses: helm/chart-testing-action@v2.3.1
-        with:
-          version: ${{ vars.HELM_VERSION }}
+        # with:
+        #   version: ${{ vars.HELM_VERSION }}
       
       - name: Run chart-testing (list-changed)
         id: list-changed
