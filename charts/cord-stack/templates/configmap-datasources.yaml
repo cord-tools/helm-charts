@@ -14,8 +14,14 @@ data:
     datasources:
     - name: Loki
       type: loki
-      url: http://{{ include "cord-stack.loki.fullname" . }}:{{ index .Values "cord-api" "loki" "service" "port" }}
+      url: http://{{ include "cord-stack.loki.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local:3100
       access: proxy
+      jsonData:
+        timeField: time
+        timeFormat: "iso8601"
+        httpHeaderName1: 'X-Scope-OrgID'
+        httpHeaderValue1: '1'
+        httpMethod: POST
       version: 1
       editable: false
 {{- end }}
