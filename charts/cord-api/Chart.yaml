@@ -13,9 +13,9 @@ maintainers:
     email: help@cord.tools
 dependencies:
   - name: mongodb
-    version: "~13.6.0"
+    version: "~10.5.2"
     condition: mongodb.enabled
-    repository: https://charts.bitnami.com/bitnami
+    repository: https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami
   - name: "loki"
     version: "~3.8.2"
     condition: loki.enabled

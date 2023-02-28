@@ -12,9 +12,9 @@ The API for Cord Tools
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | mongodb | ~13.6.0 |
 | https://grafana.github.io/helm-charts | loki | ~3.8.2 |
 | https://grafana.github.io/helm-charts | promtail | ~6.7.4 |
+| https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami | mongodb | ~10.5.2 |
 
 ## Chart Repo
 
@@ -29,7 +29,7 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
-| autoscaling.enabled | bool | `false` |  |
+| autoscaling.enabled | bool | `true` |  |
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
@@ -77,9 +77,11 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | loki.enabled | bool | `true` |  |
 | loki.persistence.enabled | bool | `false` |  |
 | loki.persistence.size | string | `"10Gi"` |  |
+| loki.read.replicas | int | `1` |  |
 | loki.server.http_listen_port | int | `3100` |  |
 | loki.table_manager.retention_deletes_enabled | bool | `true` |  |
 | loki.table_manager.retention_period | string | `"720h"` |  |
+| loki.write.replicas | int | `1` |  |
 | mongodb.auth.database | string | `"cordtools"` |  |
 | mongodb.auth.enabled | bool | `true` |  |
 | mongodb.auth.password | string | `"changeme"` |  |
@@ -142,7 +144,7 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | promtail.enabled | bool | `true` |  |
 | promtail.serviceMonitor.enabled | bool | `false` |  |
 | rbac.create | bool | `true` |  |
-| replicaCount | int | `1` |  |
+| replicaCount | int | `2` |  |
 | resources | object | `{}` |  |
 | secrets.GITHUB_CLIENT_SECRET | string | `""` |  |
 | securityContext | object | `{}` |  |

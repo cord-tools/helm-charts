@@ -17,8 +17,6 @@ data:
       url: http://{{ include "cord-stack.loki.fullname" . }}:{{ index .Values "cord-api" "loki" "service" "port" }}
       access: proxy
       jsonData:
-        timeField: time
-        timeFormat: "iso8601"
         httpHeaderName1: 'X-Scope-OrgID'
         httpHeaderValue1: '1'
         httpMethod: POST
