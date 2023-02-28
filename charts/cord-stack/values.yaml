@@ -142,6 +142,8 @@ cord-api:
       enabled: true
     serviceMonitor:
       enabled: true
+    server:
+      http_listen_port: 3100
   # Log collector
   promtail:
     serviceMonitor:

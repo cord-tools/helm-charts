@@ -1,6 +1,6 @@
 # cord-stack
 
-![Version: 1.1.5](https://img.shields.io/badge/Version-1.1.5-informational?style=flat-square)
+![Version: 1.1.6](https://img.shields.io/badge/Version-1.1.6-informational?style=flat-square)
 
 The fullstack of Cord Tools
 
@@ -90,6 +90,7 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | cord-api.localFileStore.signingKey | string | `"changeme"` |  |
 | cord-api.localFileStore.volumeSize | string | `"100Gi"` |  |
 | cord-api.loki.persistence.enabled | bool | `true` |  |
+| cord-api.loki.server.http_listen_port | int | `3100` |  |
 | cord-api.loki.serviceMonitor.enabled | bool | `true` |  |
 | cord-api.mongodb.auth.password | string | `"changeme"` |  |
 | cord-api.mongodb.metrics.enabled | bool | `true` |  |
