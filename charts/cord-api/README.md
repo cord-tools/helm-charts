@@ -12,7 +12,7 @@ The API for Cord Tools
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://grafana.github.io/helm-charts | loki | ~3.8.2 |
+| https://grafana.github.io/helm-charts | loki | ~3.0.4 |
 | https://grafana.github.io/helm-charts | promtail | ~6.7.4 |
 | https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami | mongodb | ~10.5.2 |
 
