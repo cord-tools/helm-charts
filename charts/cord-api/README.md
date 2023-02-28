@@ -72,6 +72,8 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | localFileStore.signingKey | string | `"changeme"` |  |
 | localFileStore.volumeSize | string | `"40Gi"` |  |
 | loki.chunk_store_config.max_look_back_period | string | `"720h"` |  |
+| loki.clients[0].tenant_id | int | `1` |  |
+| loki.clients[0].url | string | `"http://loki:3100/loki/api/v1/push"` |  |
 | loki.enabled | bool | `true` |  |
 | loki.persistence.enabled | bool | `false` |  |
 | loki.persistence.size | string | `"10Gi"` |  |
@@ -105,6 +107,8 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | packageScheduleRunnerArgs | string | `"- ./cord-api package-schedule-runner --frequency={{ .schedule.frequency }} --workers={{ .Values.packageScheduleRunner.workers }}"` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
+| promtail.config.clients[0].tenant_id | int | `1` |  |
+| promtail.config.clients[0].url | string | `"http://loki:3100/loki/api/v1/push"` |  |
 | promtail.config.snippets.common[0].action | string | `"replace"` |  |
 | promtail.config.snippets.common[0].source_labels[0] | string | `"__meta_kubernetes_pod_node_name"` |  |
 | promtail.config.snippets.common[0].target_label | string | `"node_name"` |  |

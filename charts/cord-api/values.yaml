@@ -234,6 +234,9 @@ loki:
   table_manager:
     retention_deletes_enabled: true
     retention_period: 720h
+  clients:
+    - url: http://loki:3100/loki/api/v1/push
+      tenant_id: 1
 
 # loki:
 #   enabled: true
@@ -248,9 +251,9 @@ loki:
 #     table_manager:
 #       retention_deletes_enabled: true
 #       retention_period: 720h
-#     clients:
-#       - url: http://loki.monitoring:3100/loki/api/v1/push
-#         tenant_id: 1
+    # clients:
+    #   - url: http://loki.monitoring:3100/loki/api/v1/push
+    #     tenant_id: 1
 
 # Log collector
 promtail:
@@ -297,6 +300,9 @@ promtail:
             - __meta_kubernetes_pod_uid
             - __meta_kubernetes_pod_container_name
           target_label: __path__
+    clients:
+    - url: http://loki:3100/loki/api/v1/push
+      tenant_id: 1
 
 # https://github.com/grafana/loki/issues/7081
 # grafana:

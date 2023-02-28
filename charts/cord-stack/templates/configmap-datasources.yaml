@@ -14,7 +14,7 @@ data:
     datasources:
     - name: Loki
       type: loki
-      url: http://{{ include "cord-stack.loki.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local:3100
+      url: http://{{ include "cord-stack.loki.fullname" . }}:{{ index .Values "cord-api" "loki" "service" "port" }}
       access: proxy
       jsonData:
         timeField: time
