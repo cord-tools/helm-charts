@@ -75,6 +75,7 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | loki.enabled | bool | `true` |  |
 | loki.persistence.enabled | bool | `false` |  |
 | loki.persistence.size | string | `"10Gi"` |  |
+| loki.server.http_listen_port | int | `3100` |  |
 | loki.table_manager.retention_deletes_enabled | bool | `true` |  |
 | loki.table_manager.retention_period | string | `"720h"` |  |
 | mongodb.auth.database | string | `"cordtools"` |  |
