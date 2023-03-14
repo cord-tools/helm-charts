@@ -6,3 +6,6 @@ tanka/vendor
 configurationCache.log
 settings.json
 /.vscode
+
+# local logs
+*.log

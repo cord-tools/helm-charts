@@ -2,7 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 2
+replicaCount: 1
 
 image:
   repository: public.ecr.aws/cord-tools/cord-api
@@ -173,7 +173,7 @@ resources: {}
   #  memory: 128Mi
 
 autoscaling:
-  enabled: true
+  enabled: false
   minReplicas: 1
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
@@ -219,42 +219,17 @@ mongodb:
 # # Log storage
 loki:
   enabled: true
-  server:
-    http_listen_port: 3100
   persistence:
     enabled: false
     size: 10Gi
   serviceMonitor:
     enabled: false
-  chunk_store_config:
-    max_look_back_period: 720h
-  table_manager:
-    retention_deletes_enabled: true
-    retention_period: 720h
-  clients:
-    - url: http://loki:3100/loki/api/v1/push
-      tenant_id: 1
-  read:
-    replicas: 1
-  write:
-    replicas: 1
-
-# loki:
-#   enabled: true
-#   persistence:
-#     enabled: false
-#     size: 10Gi
-#   serviceMonitor:
-#     enabled: false
-#   config:
-#     chunk_store_config:
-#       max_look_back_period: 720h
-#     table_manager:
-#       retention_deletes_enabled: true
-#       retention_period: 720h
-    # clients:
-    #   - url: http://loki.monitoring:3100/loki/api/v1/push
-    #     tenant_id: 1
+  config:
+    chunk_store_config:
+      max_look_back_period: 720h
+    table_manager:
+      retention_deletes_enabled: true
+      retention_period: 720h
 
 # Log collector
 promtail:
@@ -301,23 +276,6 @@ promtail:
             - __meta_kubernetes_pod_uid
             - __meta_kubernetes_pod_container_name
           target_label: __path__
-    clients:
-    - url: http://loki:3100/loki/api/v1/push
-      tenant_id: 1
-
-# https://github.com/grafana/loki/issues/7081
-# grafana:
-#   datasources:
-#     datasources.yaml:
-#       apiVersion: 1
-#       datasources:
-#         - name: Loki
-#           type: loki
-#           url: http://loki:3100
-#           jsonData:
-#             httpHeaderName1: 'X-Scope-OrgID'
-#           secureJsonData:
-#             httpHeaderValue1: '1'
 
 # The command to run to trigger backups in a cronjob
 # WARNING: Only change if you know what you are doing

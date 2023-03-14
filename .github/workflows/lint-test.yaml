@@ -11,7 +11,6 @@ jobs:
           # - v1.16.15
           # - v1.19.11
           - v1.21.1
-          - v1.22.9
           - v1.23.13
     steps:
       - name: Checkout
@@ -26,11 +25,16 @@ jobs:
 
       # Python is required because `ct lint` runs Yamale (https://github.com/23andMe/Yamale) and
       # yamllint (https://github.com/adrienverge/yamllint) which require Python
-      - name: Set up Python
+      - name: Set up Python 3.8
         uses: actions/setup-python@v4
         with:
-          python-version: '3.7'
-          check-latest: true
+          python-version: 3.8
+      - name: Creating Virtual Environment
+        run: |
+          pip install --upgrade pip
+          python3.8 -m venv env
+          source env/bin/activate
+          echo "VIRTUAL ENV:" $VIRTUAL_ENV
 
       - name: Set up chart-testing
         uses: helm/chart-testing-action@v2.3.1
