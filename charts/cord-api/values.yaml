@@ -213,10 +213,8 @@ mongodb:
     serviceMonitor:
       enabled: false
 
-# https://stackoverflow.com/questions/71697241/promtail-is-not-able-to-send-logs-to-grafana
-# https://github.com/grafana/helm-charts/issues/1162
-# https://artifacthub.io/packages/helm/grafana/promtail
-# # Log storage
+
+# Log storage
 loki:
   enabled: true
   persistence:

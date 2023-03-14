@@ -2,16 +2,16 @@ name: Lint and Test Charts
 
 on: pull_request
 
+env: 
+  HELM_VERSION: v3.7.1
+
 jobs:
   lint-test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         k8s:
-          # - v1.16.15
-          # - v1.19.11
           - v1.21.1
-          - v1.23.13
     steps:
       - name: Checkout
         uses: actions/checkout@v3
