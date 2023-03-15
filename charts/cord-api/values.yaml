@@ -213,6 +213,7 @@ mongodb:
     serviceMonitor:
       enabled: false
 
+
 # Log storage
 loki:
   enabled: true
