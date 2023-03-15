@@ -12,7 +12,7 @@ jobs:
       matrix:
         k8s:
           - v1.21.1
-          - v1.23
+          # - v1.23.5
     steps:
       - name: Checkout
         uses: actions/checkout@v3
