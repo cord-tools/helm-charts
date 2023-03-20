@@ -9,4 +9,5 @@ chart-repos:
   - bitnami=https://charts.bitnami.com/bitnami
   - ingress-nginx=https://kubernetes.github.io/ingress-nginx
   - prometheus-community=https://prometheus-community.github.io/helm-charts
+  - bitnami-pre-2022=https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami
 helm-extra-args: --timeout 600s
