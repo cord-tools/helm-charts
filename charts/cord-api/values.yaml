@@ -154,17 +154,16 @@ ingress:
 
 podAnnotations: {}
 
-podSecurityContext:
+podSecurityContext: {}
+# fsGroup: 2000
+
+securityContext:
+  runAsNonRoot: true
   runAsUser: 1000
-
-
-securityContext: {}
   # capabilities:
   #   drop:
   #   - ALL
   # readOnlyRootFilesystem: true
-# runAsNonRoot: true
-# runAsUser: 1000
 
 resources: {}
   #  cpu: 100m
