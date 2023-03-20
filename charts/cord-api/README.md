@@ -104,7 +104,7 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | packageScheduleRunner.workers | int | `5` |  |
 | packageScheduleRunnerArgs | string | `"- ./cord-api package-schedule-runner --frequency={{ .schedule.frequency }} --workers={{ .Values.packageScheduleRunner.workers }}"` |  |
 | podAnnotations | object | `{}` |  |
-| podSecurityContext.runAsUser | int | `1000` |  |
+| podSecurityContext | object | `{}` |  |
 | promtail.config.snippets.common[0].action | string | `"replace"` |  |
 | promtail.config.snippets.common[0].source_labels[0] | string | `"__meta_kubernetes_pod_node_name"` |  |
 | promtail.config.snippets.common[0].target_label | string | `"node_name"` |  |
@@ -141,7 +141,8 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | secrets.GITHUB_CLIENT_SECRET | string | `""` |  |
-| securityContext | object | `{}` |  |
+| securityContext.runAsNonRoot | bool | `true` |  |
+| securityContext.runAsUser | int | `1000` |  |
 | service.internalPort | int | `8080` |  |
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |
