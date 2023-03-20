@@ -154,8 +154,9 @@ ingress:
 
 podAnnotations: {}
 
-podSecurityContext: {}
-# fsGroup: 2000
+podSecurityContext:
+  runAsUser: 1000
+
 
 securityContext: {}
   # capabilities:
