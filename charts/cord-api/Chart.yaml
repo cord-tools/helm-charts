@@ -1,5 +1,5 @@
 apiVersion: v2
-appVersion: "1.1.4"
+appVersion: "1.1.6"
 description: The API for Cord Tools
 name: cord-api
 version: "1.2.2"
@@ -13,9 +13,9 @@ maintainers:
     email: help@cord.tools
 dependencies:
   - name: mongodb
-    version: "~13.9.0"
+    version: "~10.5.2"
     condition: mongodb.enabled
-    repository: https://charts.bitnami.com/bitnami
+    repository: https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami
   - name: "loki"
     version: "~2.3.0"
     condition: loki.enabled

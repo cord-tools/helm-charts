@@ -43,7 +43,9 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          args: ["./cord-api", "server"]
+          args: ["cp -Lr /opt/specs/*
+              /home/corduser/go/src/github.com/cord-tools/cord-api/specs &&
+              ./cord-api server"]
           ports:
             - name: http
               containerPort: 80
@@ -63,10 +65,14 @@ spec:
             httpGet:
               path: /healthcheck
               port: http-internal
+            initialDelaySeconds: 15
+            periodSeconds: 30
           readinessProbe:
             httpGet:
               path: /healthcheck
               port: http-internal
+            initialDelaySeconds: 15
+            periodSeconds: 30
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
         - name: environment-stopper
