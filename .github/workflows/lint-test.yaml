@@ -58,5 +58,9 @@ jobs:
           node_image: kindest/node:${{ matrix.k8s }}
           kubectl_version: ${{ matrix.k8s }}
 
+      - name: Installing CRDs manually (prerequisite)  
+        run: |
+          kubectl apply -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.46.0/example/prometheus-operator-crd/monitoring.coreos.com_servicemonitors.yaml
+
       - name: Run chart-testing (install)
         run: ct install --config ct.yaml
