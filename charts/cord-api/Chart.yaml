@@ -1,8 +1,8 @@
 apiVersion: v2
-appVersion: "1.1.4"
+appVersion: "1.1.8"
 description: The API for Cord Tools
 name: cord-api
-version: "1.2.1"
+version: "1.2.2"
 icon: https://irp.cdn-website.com/27aeb91f/dms3rep/multi/Cord-Logo-Stacked-57x57.png
 home: https://github.com/cord-tools/helm-charts
 sources:
