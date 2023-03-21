@@ -6,7 +6,7 @@ on:
       - main
 
 env: 
-  HELM_VERSION: v3.7.1
+  HELM_VERSION: v3.8.0
 
 jobs:
   release:

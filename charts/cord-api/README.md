@@ -1,6 +1,6 @@
 # cord-api
 
-![Version: 1.2.2](https://img.shields.io/badge/Version-1.2.2-informational?style=flat-square) ![AppVersion: 1.1.7](https://img.shields.io/badge/AppVersion-1.1.7-informational?style=flat-square)
+![Version: 1.2.2](https://img.shields.io/badge/Version-1.2.2-informational?style=flat-square) ![AppVersion: 1.1.8](https://img.shields.io/badge/AppVersion-1.1.8-informational?style=flat-square)
 
 The API for Cord Tools
 
@@ -141,8 +141,7 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | secrets.GITHUB_CLIENT_SECRET | string | `""` |  |
-| securityContext.runAsNonRoot | bool | `true` |  |
-| securityContext.runAsUser | int | `1000` |  |
+| securityContext | object | `{}` |  |
 | service.internalPort | int | `8080` |  |
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |

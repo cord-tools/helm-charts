@@ -154,9 +154,9 @@ ingress:
 
 podAnnotations: {}
 
-podSecurityContext:
-  runAsNonRoot: true
-  runAsUser: 1000
+podSecurityContext: {}
+  # runAsNonRoot: true
+  # runAsUser: 1000
 
 securityContext: {}
   # capabilities:
