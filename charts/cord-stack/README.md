@@ -13,7 +13,7 @@ The fullstack of Cord Tools
 | Repository | Name | Version |
 |------------|------|---------|
 | https://cord-tools.github.io/helm-charts | cord-api | 1.2.2 |
-| https://cord-tools.github.io/helm-charts | cord-api-v2 | 1.0.0 |
+| https://cord-tools.github.io/helm-charts | cord-api-v2 | 1.0.1 |
 | https://cord-tools.github.io/helm-charts | cord-proxy | 1.1.0 |
 | https://cord-tools.github.io/helm-charts | cord-ui | 1.2.0 |
 | https://kubernetes.github.io/ingress-nginx | ingress-nginx | ~3.22.0 |
