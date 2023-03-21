@@ -1,6 +1,6 @@
 # cord-api-v2
 
-![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
+![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
 
 Authentication and authorization service for Cord Tools
 
@@ -12,7 +12,7 @@ Authentication and authorization service for Cord Tools
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | postgresql | ~10.2.0 |
+| https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami | postgresql | ~10.2.0 |
 
 ## Chart Repo
 
