@@ -1,6 +1,6 @@
 # cord-stack
 
-![Version: 1.1.6](https://img.shields.io/badge/Version-1.1.6-informational?style=flat-square)
+![Version: 1.1.7](https://img.shields.io/badge/Version-1.1.7-informational?style=flat-square)
 
 The fullstack of Cord Tools
 
