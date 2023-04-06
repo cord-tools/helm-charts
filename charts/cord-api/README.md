@@ -1,6 +1,6 @@
 # cord-api
 
-![Version: 1.2.2](https://img.shields.io/badge/Version-1.2.2-informational?style=flat-square) ![AppVersion: 1.1.8](https://img.shields.io/badge/AppVersion-1.1.8-informational?style=flat-square)
+![Version: 1.2.3](https://img.shields.io/badge/Version-1.2.3-informational?style=flat-square) ![AppVersion: 1.1.8](https://img.shields.io/badge/AppVersion-1.1.8-informational?style=flat-square)
 
 The API for Cord Tools
 
@@ -12,9 +12,9 @@ The API for Cord Tools
 
 | Repository | Name | Version |
 |------------|------|---------|
+| https://charts.bitnami.com/bitnami | mongodb | ~13.9.0 |
 | https://grafana.github.io/helm-charts | loki | ~2.3.0 |
 | https://grafana.github.io/helm-charts | promtail | ~3.0.4 |
-| https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami | mongodb | ~10.5.2 |
 
 ## Chart Repo
 
