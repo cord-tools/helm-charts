@@ -3,6 +3,36 @@ entries:
   cord-api:
   - apiVersion: v2
     appVersion: 1.1.8
+    created: "2023-05-10T18:34:30.88223074Z"
+    dependencies:
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami
+      version: ~10.5.2
+    - condition: loki.enabled
+      name: loki
+      repository: https://grafana.github.io/helm-charts
+      version: ~2.3.0
+    - condition: promtail.enabled
+      name: promtail
+      repository: https://grafana.github.io/helm-charts
+      version: ~3.0.4
+    description: The API for Cord Tools
+    digest: d2294e603146535a88ac60ea43d3d7a464d6eeff9903ef2eba75042ca9008086
+    home: https://github.com/cord-tools/helm-charts
+    icon: https://irp.cdn-website.com/27aeb91f/dms3rep/multi/Cord-Logo-Stacked-57x57.png
+    maintainers:
+    - email: help@cord.tools
+      name: cord-tools
+      url: https://cord.tools
+    name: cord-api
+    sources:
+    - https://github.com/cord-tools/cord-api
+    urls:
+    - https://github.com/cord-tools/helm-charts/releases/download/cord-api-1.2.3/cord-api-1.2.3.tgz
+    version: 1.2.3
+  - apiVersion: v2
+    appVersion: 1.1.8
     created: "2023-03-21T19:12:04.560243811Z"
     dependencies:
     - condition: mongodb.enabled
@@ -664,6 +694,28 @@ entries:
   cord-api-v2:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2023-05-10T18:34:31.118461192Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami
+      version: ~10.2.0
+    description: Authentication and authorization service for Cord Tools
+    digest: 0780473a6fdba569058ad57e7411ad487f7b3494f4721e5e3990f5b7f59f8780
+    home: https://github.com/cord-tools/helm-charts
+    icon: https://irp.cdn-website.com/27aeb91f/dms3rep/multi/Cord-Logo-Stacked-57x57.png
+    maintainers:
+    - email: hello@hoodoo.digital
+      name: hoodoo-digital
+      url: https://hoodoo.digital
+    name: cord-api-v2
+    sources:
+    - https://github.com/cord-tools/cord-api-v2
+    urls:
+    - https://github.com/cord-tools/helm-charts/releases/download/cord-api-v2-1.0.2/cord-api-v2-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2023-03-21T21:35:00.349655196Z"
     dependencies:
     - condition: postgresql.enabled
@@ -841,6 +893,24 @@ entries:
   cord-proxy:
   - apiVersion: v2
     appVersion: 1.1.0
+    created: "2023-05-10T18:34:31.352229813Z"
+    description: Forwards requests to AEM environments
+    digest: 4ab2f54e7dc2447ca1481197e8bd395aea2ae6ae6ac230468ca8deb4622c568f
+    home: https://github.com/cord-tools/helm-charts
+    icon: https://irp.cdn-website.com/27aeb91f/dms3rep/multi/Cord-Logo-Stacked-57x57.png
+    maintainers:
+    - email: hello@hoodoo.digital
+      name: hoodoo-digital
+      url: https://hoodoo.digital
+    name: cord-proxy
+    sources:
+    - https://github.com/cord-tools/cord-proxy
+    type: application
+    urls:
+    - https://github.com/cord-tools/helm-charts/releases/download/cord-proxy-1.1.1/cord-proxy-1.1.1.tgz
+    version: 1.1.1
+  - apiVersion: v2
+    appVersion: 1.1.0
     created: "2022-02-28T21:59:57.368591681Z"
     description: Forwards requests to AEM environments
     digest: 59539c0e059de8c0fa47fc94a9ae21340a4e81cdfc1dc51d4182fc9a5173c7ba
@@ -966,6 +1036,47 @@ entries:
     - https://github.com/cord-tools/helm-charts/releases/download/cord-proxy-1.0.0-rc.0/cord-proxy-1.0.0-rc.0.tgz
     version: 1.0.0-rc.0
   cord-stack:
+  - apiVersion: v2
+    created: "2023-05-10T18:34:31.693649698Z"
+    dependencies:
+    - condition: cord-api.enabled
+      name: cord-api
+      repository: https://cord-tools.github.io/helm-charts
+      version: 1.2.2
+    - condition: cord-api-v2.enabled
+      name: cord-api-v2
+      repository: https://cord-tools.github.io/helm-charts
+      version: 1.0.1
+    - condition: cord-ui.enabled
+      name: cord-ui
+      repository: https://cord-tools.github.io/helm-charts
+      version: 1.2.0
+    - condition: cord-proxy.enabled
+      name: cord-proxy
+      repository: https://cord-tools.github.io/helm-charts
+      version: 1.1.0
+    - condition: ingress-nginx.enabled
+      name: ingress-nginx
+      repository: https://kubernetes.github.io/ingress-nginx
+      version: ~4.6.1
+    - condition: kube-prometheus-stack.enabled
+      name: kube-prometheus-stack
+      repository: https://prometheus-community.github.io/helm-charts
+      version: ~13.3.0
+    description: The fullstack of Cord Tools
+    digest: 5fd81e3a22704f731d1c60664b44ce7cf7db7ddded050f87a4db4c24c242df2d
+    home: https://github.com/cord-tools/helm-charts
+    icon: https://irp.cdn-website.com/27aeb91f/dms3rep/multi/Cord-Logo-Stacked-57x57.png
+    maintainers:
+    - email: hello@hoodoo.digital
+      name: hoodoo-digital
+      url: https://hoodoo.digital
+    name: cord-stack
+    sources:
+    - https://github.com/cord-tools/
+    urls:
+    - https://github.com/cord-tools/helm-charts/releases/download/cord-stack-1.1.9/cord-stack-1.1.9.tgz
+    version: 1.1.9
   - apiVersion: v2
     created: "2023-05-10T16:53:49.933584518Z"
     dependencies:
@@ -2039,6 +2150,24 @@ entries:
     - https://github.com/cord-tools/helm-charts/releases/download/cord-stack-1.0.0-rc.0/cord-stack-1.0.0-rc.0.tgz
     version: 1.0.0-rc.0
   cord-ui:
+  - apiVersion: v2
+    appVersion: 1.2.0
+    created: "2023-05-10T18:34:31.919894116Z"
+    description: The UI for Cord Tools
+    digest: 72a029ab073b971a29f1460cd9d94f3a9c2445f6a8f4ab1e4089b7af613d9816
+    home: https://github.com/cord-tools/helm-charts
+    icon: https://irp.cdn-website.com/27aeb91f/dms3rep/multi/Cord-Logo-Stacked-57x57.png
+    maintainers:
+    - email: hello@hoodoo.digital
+      name: hoodoo-digital
+      url: https://hoodoo.digital
+    name: cord-ui
+    sources:
+    - https://github.com/cord-tools/cord-ui
+    type: application
+    urls:
+    - https://github.com/cord-tools/helm-charts/releases/download/cord-ui-1.2.1/cord-ui-1.2.1.tgz
+    version: 1.2.1
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2022-06-23T19:41:00.619764903Z"
