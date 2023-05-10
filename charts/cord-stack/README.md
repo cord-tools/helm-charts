@@ -17,7 +17,7 @@ The fullstack of Cord Tools
 | https://cord-tools.github.io/helm-charts | cord-proxy | 1.1.1 |
 | https://cord-tools.github.io/helm-charts | cord-ui | 1.2.1 |
 | https://kubernetes.github.io/ingress-nginx | ingress-nginx | ~4.6.1 |
-| https://prometheus-community.github.io/helm-charts | kube-prometheus-stack | ~45.27.1 |
+| https://prometheus-community.github.io/helm-charts | kube-prometheus-stack | ~13.3.0 |
 
 ## Chart Repo
 
