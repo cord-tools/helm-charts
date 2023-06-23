@@ -1,6 +1,6 @@
 # cord-ui
 
-![Version: 1.2.1](https://img.shields.io/badge/Version-1.2.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.2.0](https://img.shields.io/badge/AppVersion-1.2.0-informational?style=flat-square)
+![Version: 1.2.2](https://img.shields.io/badge/Version-1.2.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.1.0](https://img.shields.io/badge/AppVersion-2.1.0-informational?style=flat-square)
 
 The UI for Cord Tools
 
@@ -59,7 +59,7 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | metrics.enabled | bool | `false` |  |
 | metrics.image.pullPolicy | string | `"IfNotPresent"` |  |
 | metrics.image.repository | string | `"nginx/nginx-prometheus-exporter"` |  |
-| metrics.image.tag | string | `"0.8.0"` |  |
+| metrics.image.tag | string | `"0.11.0"` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
