@@ -1,6 +1,6 @@
 # cord-stack
 
-![Version: 1.1.12](https://img.shields.io/badge/Version-1.1.12-informational?style=flat-square)
+![Version: 1.1.14](https://img.shields.io/badge/Version-1.1.14-informational?style=flat-square)
 
 The fullstack of Cord Tools
 
@@ -17,7 +17,7 @@ The fullstack of Cord Tools
 | https://cord-tools.github.io/helm-charts | cord-proxy | 1.1.1 |
 | https://cord-tools.github.io/helm-charts | cord-ui | 1.2.1 |
 | https://kubernetes.github.io/ingress-nginx | ingress-nginx | ~4.6.1 |
-| https://prometheus-community.github.io/helm-charts | kube-prometheus-stack | ~45.27.1 |
+| https://prometheus-community.github.io/helm-charts | kube-prometheus-stack | ~47.0.0 |
 
 ## Chart Repo
 
@@ -193,6 +193,7 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | kube-prometheus-stack.grafana."grafana.ini".paths.provisioning | string | `"/etc/grafana/provisioning"` |  |
 | kube-prometheus-stack.grafana."grafana.ini".server.root_url | string | `"https://grafana.cordtools.local"` |  |
 | kube-prometheus-stack.grafana.adminPassword | string | `"changeme"` |  |
+| kube-prometheus-stack.grafana.enabled | bool | `true` |  |
 | kube-prometheus-stack.grafana.ingress.annotations."nginx.ingress.kubernetes.io/force-ssl-redirect" | string | `"true"` |  |
 | kube-prometheus-stack.grafana.ingress.enabled | bool | `true` |  |
 | kube-prometheus-stack.grafana.ingress.hosts[0] | string | `"grafana.cordtools.local"` |  |
@@ -201,3 +202,4 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | kube-prometheus-stack.prometheus.prometheusSpec.retention | string | `"30d"` |  |
 | kube-prometheus-stack.prometheus.prometheusSpec.ruleSelectorNilUsesHelmValues | bool | `false` |  |
 | kube-prometheus-stack.prometheus.prometheusSpec.serviceMonitorSelectorNilUsesHelmValues | bool | `false` |  |
+| kube-prometheus-stack.prometheus.service.port | int | `9090` |  |
