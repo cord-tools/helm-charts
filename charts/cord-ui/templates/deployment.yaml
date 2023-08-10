@@ -35,7 +35,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http-cord
-              containerPort: 8080
+              containerPort: 80
               protocol: TCP
           volumeMounts:
             - name: {{ include "cord-ui.fullname" . }}-config
