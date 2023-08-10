@@ -8,7 +8,7 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: http
+      targetPort: http-cord
       protocol: TCP
       name: http
     {{- if .Values.metrics.enabled }}
