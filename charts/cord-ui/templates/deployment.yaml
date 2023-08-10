@@ -34,7 +34,8 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: 8080
+            - name: http-cord
+              containerPort: 8080
               protocol: TCP
           volumeMounts:
             - name: {{ include "cord-ui.fullname" . }}-config
@@ -43,11 +44,11 @@ spec:
           livenessProbe:
             httpGet:
               path: /
-              port: 8080
+              port: http-cord
           readinessProbe:
             httpGet:
               path: /
-              port: 8080
+              port: http-cord
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- if .Values.metrics.enabled }}
