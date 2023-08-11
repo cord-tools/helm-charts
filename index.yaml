@@ -3,6 +3,36 @@ entries:
   cord-api:
   - apiVersion: v2
     appVersion: 1.2.5
+    created: "2023-08-11T21:07:47.310261679Z"
+    dependencies:
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: ~12.1.31
+    - condition: loki.enabled
+      name: loki
+      repository: https://grafana.github.io/helm-charts
+      version: ~2.3.0
+    - condition: promtail.enabled
+      name: promtail
+      repository: https://grafana.github.io/helm-charts
+      version: ~3.0.4
+    description: The API for Cord Tools
+    digest: ce81a211dc89cb4a3e25d701c1b95ee921c9e5555e76081d4fce38c51dcc071d
+    home: https://github.com/cord-tools/helm-charts
+    icon: https://irp.cdn-website.com/27aeb91f/dms3rep/multi/Cord-Logo-Stacked-57x57.png
+    maintainers:
+    - email: help@cord.tools
+      name: cord-tools
+      url: https://cord.tools
+    name: cord-api
+    sources:
+    - https://github.com/cord-tools/cord-api
+    urls:
+    - https://github.com/cord-tools/helm-charts/releases/download/cord-api-1.2.7/cord-api-1.2.7.tgz
+    version: 1.2.7
+  - apiVersion: v2
+    appVersion: 1.2.5
     created: "2023-08-11T17:27:08.823038533Z"
     dependencies:
     - condition: mongodb.enabled
