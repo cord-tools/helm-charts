@@ -2,7 +2,7 @@ apiVersion: v2
 appVersion: "1.2.5"
 description: The API for Cord Tools
 name: cord-api
-version: "1.2.6"
+version: "1.2.7"
 icon: https://irp.cdn-website.com/27aeb91f/dms3rep/multi/Cord-Logo-Stacked-57x57.png
 home: https://github.com/cord-tools/helm-charts
 sources:
@@ -13,7 +13,7 @@ maintainers:
     email: help@cord.tools
 dependencies:
   - name: mongodb
-    version: "~13.16.3"
+    version: "~12.1.31"
     condition: mongodb.enabled
     repository: https://charts.bitnami.com/bitnami
   - name: "loki"
