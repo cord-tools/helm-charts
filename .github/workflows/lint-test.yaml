@@ -12,7 +12,6 @@ jobs:
       matrix:
         k8s:
           - v1.24.12
-          - v1.26.6
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -38,7 +37,7 @@ jobs:
           echo "VIRTUAL ENV:" $VIRTUAL_ENV
 
       - name: Set up chart-testing
-        uses: helm/chart-testing-action@v2.5.0
+        uses: helm/chart-testing-action@v2.3.1
       
       - name: Run chart-testing (list-changed)
         id: list-changed
@@ -52,7 +51,7 @@ jobs:
         run: ct lint --config ct.yaml
 
       - name: Create kind cluster
-        uses: helm/kind-action@v1.7.0
+        uses: helm/kind-action@v1.5.0
         if: ${{ needs.list-changed.outputs.changed }} == 'true'
         with:
           node_image: kindest/node:${{ matrix.k8s }}
