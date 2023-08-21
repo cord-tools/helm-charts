@@ -813,6 +813,28 @@ entries:
     version: 1.0.0-rc.0
   cord-api-v2:
   - apiVersion: v2
+    appVersion: 1.0.1
+    created: "2023-08-21T20:23:28.644344933Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami
+      version: ~10.2.0
+    description: Authentication and authorization service for Cord Tools
+    digest: 1a4f3fde667e52c08e45d64f2128871d3cd7b2830c25fa38ff7fecef8f5bfea1
+    home: https://github.com/cord-tools/helm-charts
+    icon: https://irp.cdn-website.com/27aeb91f/dms3rep/multi/Cord-Logo-Stacked-57x57.png
+    maintainers:
+    - email: hello@hoodoo.digital
+      name: hoodoo-digital
+      url: https://hoodoo.digital
+    name: cord-api-v2
+    sources:
+    - https://github.com/cord-tools/cord-api-v2
+    urls:
+    - https://github.com/cord-tools/helm-charts/releases/download/cord-api-v2-1.0.3/cord-api-v2-1.0.3.tgz
+    version: 1.0.3
+  - apiVersion: v2
     appVersion: 1.0.0
     created: "2023-05-10T18:34:31.118461192Z"
     dependencies:
