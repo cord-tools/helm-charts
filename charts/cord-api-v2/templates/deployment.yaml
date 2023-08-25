@@ -44,9 +44,9 @@ spec:
               value: {{ template "cord-api-v2.postgresql.fullname" . }}
             - name: ENABLE_PROMETHEUS
               value: "false"
-            - name: POSTGRESQL_DATABASE
+            - name: POSTGRES_DB
               value: {{ .Values.postgresql.auth.database | quote }}
-            - name: POSTGRESQL_USER
+            - name: POSTGRES_USER
               value: {{ .Values.postgresql.auth.username | quote }}
             {{- range $key, $value := .Values.config }}
             - name: {{ $key | quote }}
@@ -68,9 +68,9 @@ spec:
           env:
             - name: DB_HOST
               value: {{ template "cord-api-v2.postgresql.fullname" . }}
-            - name: POSTGRESQL_DATABASE
+            - name: POSTGRES_DB
               value: {{ .Values.postgresql.auth.database | quote }}
-            - name: POSTGRESQL_USER
+            - name: POSTGRES_USER
               value: {{ .Values.postgresql.auth.username | quote }}
             - name: ENABLE_PROMETHEUS
               value: {{ .Values.metrics.enabled | quote }}
