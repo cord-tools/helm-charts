@@ -159,18 +159,17 @@ serviceAccount:
 #     serviceMonitor:
 #       enabled: false
 
-global:
-  postgresql:
-    enabled: true
-    auth:
-      postgresPassword: "password"
-      username: "cordtools"
-      password: "changeme"
-      database: "cordtools"
-    metrics:
+postgresql:
+  enabled: true
+  auth:
+    postgresPassword: "changeme"
+    username: "cordtools"
+    password: "changeme"
+    database: "cordtools"
+  metrics:
+    enabled: false
+    serviceMonitor:
       enabled: false
-      serviceMonitor:
-        enabled: false
 
 # The command to run in the db migrate post-install/post-upgrade hook
 # WARNING: Only change if you know what you are doing
