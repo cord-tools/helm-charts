@@ -39,6 +39,13 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | config.RAILS_ENV | string | `"production"` |  |
 | dbMigrateArgs[0] | string | `"bundle exec rake db:migrate"` |  |
 | fullnameOverride | string | `""` |  |
+| global.postgresql.auth.database | string | `"cordtools"` |  |
+| global.postgresql.auth.password | string | `"changeme"` |  |
+| global.postgresql.auth.postgresPassword | string | `"password"` |  |
+| global.postgresql.auth.username | string | `"cordtools"` |  |
+| global.postgresql.enabled | bool | `true` |  |
+| global.postgresql.metrics.enabled | bool | `false` |  |
+| global.postgresql.metrics.serviceMonitor.enabled | bool | `false` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"public.ecr.aws/cord-tools/cord-api-v2"` |  |
 | image.tag | string | `""` |  |
@@ -61,12 +68,6 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
-| postgresql.enabled | bool | `true` |  |
-| postgresql.metrics.enabled | bool | `false` |  |
-| postgresql.metrics.serviceMonitor.enabled | bool | `false` |  |
-| postgresql.postgresqlDatabase | string | `"cordtools"` |  |
-| postgresql.postgresqlPassword | string | `"password"` |  |
-| postgresql.postgresqlUsername | string | `"cordtools"` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | secrets.JWT_SIGNING_KEY | string | `"changeme"` |  |
