@@ -149,15 +149,28 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
-postgresql:
-  enabled: true
-  postgresqlDatabase: cordtools
-  postgresqlUsername: cordtools
-  postgresqlPassword: password
-  metrics:
-    enabled: false
-    serviceMonitor:
+# postgresql:
+#   enabled: true
+#   postgresqlDatabase: cordtools
+#   postgresqlUsername: cordtools
+#   postgresttPassword: password
+#   metrics:
+#     enabled: false
+#     serviceMonitor:
+#       enabled: false
+
+global:
+  postgresql:
+    enabled: true
+    auth:
+      postgresPassword: "password"
+      username: "cordtools"
+      password: "changeme"
+      database: "cordtools"
+    metrics:
       enabled: false
+      serviceMonitor:
+        enabled: false
 
 # The command to run in the db migrate post-install/post-upgrade hook
 # WARNING: Only change if you know what you are doing
