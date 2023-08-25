@@ -1,6 +1,6 @@
 # cord-api-v2
 
-![Version: 1.0.3](https://img.shields.io/badge/Version-1.0.3-informational?style=flat-square) ![AppVersion: 1.0.1](https://img.shields.io/badge/AppVersion-1.0.1-informational?style=flat-square)
+![Version: 1.0.4](https://img.shields.io/badge/Version-1.0.4-informational?style=flat-square) ![AppVersion: 1.0.1](https://img.shields.io/badge/AppVersion-1.0.1-informational?style=flat-square)
 
 Authentication and authorization service for Cord Tools
 
@@ -12,7 +12,7 @@ Authentication and authorization service for Cord Tools
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami | postgresql | ~10.2.0 |
+| https://charts.bitnami.com/bitnami | postgresql | ~12.8.4 |
 
 ## Chart Repo
 
@@ -61,12 +61,13 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
+| postgresql.auth.database | string | `"cordtools"` |  |
+| postgresql.auth.password | string | `"changeme"` |  |
+| postgresql.auth.postgresPassword | string | `"changeme"` |  |
+| postgresql.auth.username | string | `"cordtools"` |  |
 | postgresql.enabled | bool | `true` |  |
 | postgresql.metrics.enabled | bool | `false` |  |
 | postgresql.metrics.serviceMonitor.enabled | bool | `false` |  |
-| postgresql.postgresqlDatabase | string | `"cordtools"` |  |
-| postgresql.postgresqlPassword | string | `"password"` |  |
-| postgresql.postgresqlUsername | string | `"cordtools"` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | secrets.JWT_SIGNING_KEY | string | `"changeme"` |  |
