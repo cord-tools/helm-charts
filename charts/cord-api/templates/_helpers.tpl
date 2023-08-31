@@ -78,7 +78,7 @@ env:
   {{- if not .Values.config.LOGS_URL }}
   - name: LOGS_URL
     {{- if .Values.loki.enabled }}
-    value: "http://{{ include "cord-api.loki.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.loki.config.server.http_listen_port }}"
+    value: "http://{{ include "cord-api.loki.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.loki.server.http_listen_port }}"
     {{- else }}
     value: ""
     {{- end }}
