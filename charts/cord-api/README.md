@@ -74,6 +74,7 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | loki.enabled | bool | `true` |  |
 | loki.persistence.enableStatefulSetAutoDeletePVC | bool | `false` |  |
 | loki.persistence.size | string | `"10Gi"` |  |
+| loki.server.http_listen_port | int | `3100` |  |
 | loki.serviceMonitor.enabled | bool | `false` |  |
 | loki.tableManager.enabled | bool | `true` |  |
 | loki.tableManager.retention_deletes_enabled | bool | `true` |  |

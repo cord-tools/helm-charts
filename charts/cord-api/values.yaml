@@ -220,6 +220,8 @@ loki:
   persistence:
     enableStatefulSetAutoDeletePVC: false
     size: 10Gi
+  server:
+    http_listen_port: 3100
   serviceMonitor:
     enabled: false
   tableManager:
