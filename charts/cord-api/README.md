@@ -71,13 +71,13 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | localFileStore.path | string | `"/cordtools-files"` |  |
 | localFileStore.signingKey | string | `"changeme"` |  |
 | localFileStore.volumeSize | string | `"40Gi"` |  |
-| loki.config.chunk_store_config.max_look_back_period | string | `"720h"` |  |
-| loki.config.table_manager.retention_deletes_enabled | bool | `true` |  |
-| loki.config.table_manager.retention_period | string | `"720h"` |  |
 | loki.enabled | bool | `true` |  |
-| loki.persistence.enabled | bool | `false` |  |
+| loki.persistence.enableStatefulSetAutoDeletePVC | bool | `false` |  |
 | loki.persistence.size | string | `"10Gi"` |  |
 | loki.serviceMonitor.enabled | bool | `false` |  |
+| loki.tableManager.enabled | bool | `true` |  |
+| loki.tableManager.retention_deletes_enabled | bool | `true` |  |
+| loki.tableManager.retention_period | string | `"720h"` |  |
 | mongodb.auth.database | string | `"cordtools"` |  |
 | mongodb.auth.enabled | bool | `true` |  |
 | mongodb.auth.password | string | `"changeme"` |  |
