@@ -71,11 +71,12 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | localFileStore.path | string | `"/cordtools-files"` |  |
 | localFileStore.signingKey | string | `"changeme"` |  |
 | localFileStore.volumeSize | string | `"40Gi"` |  |
+| loki.chunk_store_config.max_look_back_period | string | `"720h"` |  |
 | loki.enabled | bool | `true` |  |
-| loki.persistence.enableStatefulSetAutoDeletePVC | bool | `false` |  |
-| loki.persistence.size | string | `"10Gi"` |  |
+| loki.gateway.enabled | bool | `false` |  |
+| loki.monitoring.lokiCanary.enabled | bool | `true` |  |
+| loki.replicas | int | `2` |  |
 | loki.server.http_listen_port | int | `3100` |  |
-| loki.serviceMonitor.enabled | bool | `false` |  |
 | loki.tableManager.enabled | bool | `true` |  |
 | loki.tableManager.retention_deletes_enabled | bool | `true` |  |
 | loki.tableManager.retention_period | string | `"720h"` |  |
@@ -139,7 +140,7 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | promtail.enabled | bool | `true` |  |
 | promtail.serviceMonitor.enabled | bool | `false` |  |
 | rbac.create | bool | `true` |  |
-| replicaCount | int | `1` |  |
+| replicaCount | int | `2` |  |
 | resources | object | `{}` |  |
 | secrets.GITHUB_CLIENT_SECRET | string | `""` |  |
 | securityContext | object | `{}` |  |
