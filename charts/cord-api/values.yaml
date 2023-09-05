@@ -230,11 +230,11 @@ loki:
     max_look_back_period: 720h
   commonConfig:
     replication_factor: 2
-  monitoring:
-    lokiCanary:
-      enabled: true
-  gateway:
-    enabled: true
+  # monitoring:
+  #   lokiCanary:
+  #     enabled: true
+  # gateway:
+  #   enabled: false
 
 # Log collector
 promtail:
