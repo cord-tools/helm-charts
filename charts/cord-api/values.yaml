@@ -230,15 +230,22 @@ loki:
     max_look_back_period: 720h
   commonConfig:
     replication_factor: 2
-  # monitoring:
-  #   lokiCanary:
-  #     enabled: true
-  # gateway:
-  #   enabled: false
+  write:
+    replicas: 1
+  read:
+    replicas: 1
+  backend:
+    replicas: 1
+  monitoring:
+    lokiCanary:
+      enabled: true
+  gateway:
+    enabled: true
 
 # Log collector
 promtail:
   enabled: true
+  lokiAddress: http://loki-gateway:3100/loki/api/v1/push
   serviceMonitor:
     enabled: false
   config:
