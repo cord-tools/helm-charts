@@ -2,7 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 2
+replicaCount: 1
 
 image:
   repository: public.ecr.aws/cord-tools/cord-api
@@ -214,6 +214,9 @@ mongodb:
       enabled: false
 
 loki:
+  enabled: true
+  server:
+    http_listen_port: 3100
   commonConfig:
     replication_factor: 1
   storage:
@@ -253,7 +256,6 @@ singleBinary:
 # Log collector
 promtail:
   enabled: true
-  lokiAddress: http://loki-gateway:3100/loki/api/v1/push
   serviceMonitor:
     enabled: false
   config:

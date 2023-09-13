@@ -73,7 +73,9 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | localFileStore.volumeSize | string | `"40Gi"` |  |
 | loki.backend.replicas | int | `1` |  |
 | loki.commonConfig.replication_factor | int | `1` |  |
+| loki.enabled | bool | `true` |  |
 | loki.read.replicas | int | `1` |  |
+| loki.server.http_listen_port | int | `3100` |  |
 | loki.serviceMonitor.enabled | bool | `false` |  |
 | loki.storage.type | string | `"filesystem"` |  |
 | loki.table_manager.retention_deletes_enabled | bool | `true` |  |
@@ -138,10 +140,9 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | promtail.config.snippets.common[7].source_labels[1] | string | `"__meta_kubernetes_pod_container_name"` |  |
 | promtail.config.snippets.common[7].target_label | string | `"__path__"` |  |
 | promtail.enabled | bool | `true` |  |
-| promtail.lokiAddress | string | `"http://loki-gateway:3100/loki/api/v1/push"` |  |
 | promtail.serviceMonitor.enabled | bool | `false` |  |
 | rbac.create | bool | `true` |  |
-| replicaCount | int | `2` |  |
+| replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | secrets.GITHUB_CLIENT_SECRET | string | `""` |  |
 | securityContext | object | `{}` |  |
