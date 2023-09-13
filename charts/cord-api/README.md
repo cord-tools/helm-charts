@@ -71,14 +71,15 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | localFileStore.path | string | `"/cordtools-files"` |  |
 | localFileStore.signingKey | string | `"changeme"` |  |
 | localFileStore.volumeSize | string | `"40Gi"` |  |
-| loki.chunk_store_config.max_look_back_period | string | `"720h"` |  |
+| loki.backend.replicas | int | `1` |  |
 | loki.commonConfig.replication_factor | int | `1` |  |
-| loki.enabled | bool | `true` |  |
-| loki.server.http_listen_port | int | `3100` |  |
+| loki.read.replicas | int | `1` |  |
+| loki.serviceMonitor.enabled | bool | `false` |  |
 | loki.storage.type | string | `"filesystem"` |  |
-| loki.tableManager.enabled | bool | `true` |  |
-| loki.tableManager.retention_deletes_enabled | bool | `true` |  |
-| loki.tableManager.retention_period | string | `"720h"` |  |
+| loki.table_manager.retention_deletes_enabled | bool | `true` |  |
+| loki.table_manager.retention_period | string | `"720h"` |  |
+| loki.test.enabled | bool | `false` |  |
+| loki.write.replicas | int | `1` |  |
 | mongodb.auth.database | string | `"cordtools"` |  |
 | mongodb.auth.enabled | bool | `true` |  |
 | mongodb.auth.password | string | `"changeme"` |  |
@@ -88,9 +89,6 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | mongodb.metrics.serviceMonitor.enabled | bool | `false` |  |
 | mongodb.persistence.enabled | bool | `true` |  |
 | mongodb.persistence.size | string | `"8Gi"` |  |
-| monitoring.lokiCanary.enabled | bool | `false` |  |
-| monitoring.selfMonitoring.enabled | bool | `true` |  |
-| monitoring.serviceMonitor.enabled | bool | `true` |  |
 | nameOverride | string | `""` |  |
 | newArchiveRetriever.afterDate | string | `"2022-02-04"` | Only find archives that were created after this date. This should be a recent date so that every archive in the AEM archive repository isn't downloaded |
 | newArchiveRetriever.archivesAddress | string | `"https://downloads.stage.cord.tools/"` | Address of the AEM Archive repository |

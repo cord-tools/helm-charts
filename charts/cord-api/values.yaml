@@ -213,34 +213,42 @@ mongodb:
     serviceMonitor:
       enabled: false
 
-
-# Log storage
 loki:
-  enabled: true
-  # persistence:
-  #   enableStatefulSetAutoDeletePVC: false
-  #   size: 10Gi
-  server:
-    http_listen_port: 3100
-  tableManager:
-    enabled: true
-    retention_deletes_enabled: true
-    retention_period: 720h
-  chunk_store_config:
-    max_look_back_period: 720h
   commonConfig:
     replication_factor: 1
   storage:
     type: 'filesystem'
+  serviceMonitor:
+    enabled: false
+  table_manager:
+    retention_deletes_enabled: true
+    retention_period: 720h
+  backend:
+    replicas: 1
+  write:
+    replicas: 1
+  read:
+    replicas: 1
+  test:
+    enabled: false
 singleBinary:
   replicas: 1
-monitoring:
-  serviceMonitor:
-    enabled: true
-  selfMonitoring:
-    enabled: true
-  lokiCanary:
-    enabled: false
+
+######### LOKI OLD CONFIGURATION #########
+# loki:
+#   enabled: true
+#   persistence:
+#     enabled: false
+#     size: 10Gi
+#   serviceMonitor:
+#     enabled: false
+#   config:
+#     chunk_store_config:
+#       max_look_back_period: 720h
+#     table_manager:
+#       retention_deletes_enabled: true
+#       retention_period: 720h
+##########################################
 
 # Log collector
 promtail:
