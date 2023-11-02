@@ -17,10 +17,10 @@ dependencies:
     condition: mongodb.enabled
     repository: https://charts.bitnami.com/bitnami
   - name: "loki"
-    version: "~5.15.0"
+    version: "~5.36.0"
     condition: loki.enabled
     repository: https://grafana.github.io/helm-charts
   - name: "promtail"
-    version: "~6.15.1"
+    version: "~6.15.3"
     condition: promtail.enabled
     repository: https://grafana.github.io/helm-charts
