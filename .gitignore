@@ -9,3 +9,5 @@ settings.json
 
 # local logs
 *.log
+
+*.DS_Store
