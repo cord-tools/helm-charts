@@ -1,12 +1,12 @@
 dependencies:
 - name: mongodb
   repository: https://charts.bitnami.com/bitnami
-  version: 13.16.4
+  version: 14.1.1
 - name: loki
   repository: https://grafana.github.io/helm-charts
-  version: 5.36.1
+  version: 5.36.3
 - name: promtail
   repository: https://grafana.github.io/helm-charts
   version: 6.15.3
-digest: sha256:b7ce79a118a48fe15907bc42e59afac0ad7073b4226a638a9ef81d062a94fb94
-generated: "2023-11-02T13:22:58.406101-06:00"
+digest: sha256:4727d4c7d52635664e350f05af331e8277ac57e017c4fadf109e330ef1b7b04a
+generated: "2023-11-07T10:07:19.04821-06:00"
