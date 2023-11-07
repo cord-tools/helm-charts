@@ -2,7 +2,7 @@ apiVersion: v2
 appVersion: "1.0.1"
 description: Authentication and authorization service for Cord Tools
 name: cord-api-v2
-version: "1.0.4"
+version: "1.0.5"
 icon: https://irp.cdn-website.com/27aeb91f/dms3rep/multi/Cord-Logo-Stacked-57x57.png
 home: https://github.com/cord-tools/helm-charts
 sources:
@@ -13,6 +13,6 @@ maintainers:
     email: hello@hoodoo.digital
 dependencies:
   - name: postgresql
-    version: ~12.8.4
+    version: ~13.2.2
     condition: postgresql.enabled
     repository: https://charts.bitnami.com/bitnami
