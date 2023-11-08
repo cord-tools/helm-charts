@@ -1,6 +1,6 @@
 # cord-api
 
-![Version: 1.2.3](https://img.shields.io/badge/Version-1.2.3-informational?style=flat-square) ![AppVersion: 1.1.8](https://img.shields.io/badge/AppVersion-1.1.8-informational?style=flat-square)
+![Version: 1.2.10](https://img.shields.io/badge/Version-1.2.10-informational?style=flat-square) ![AppVersion: 1.2.5](https://img.shields.io/badge/AppVersion-1.2.5-informational?style=flat-square)
 
 The API for Cord Tools
 
@@ -12,9 +12,9 @@ The API for Cord Tools
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://grafana.github.io/helm-charts | loki | ~2.3.0 |
-| https://grafana.github.io/helm-charts | promtail | ~3.0.4 |
-| https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami | mongodb | ~10.5.2 |
+| https://charts.bitnami.com/bitnami | mongodb | ~14.1.0 |
+| https://grafana.github.io/helm-charts | loki | ~5.36.0 |
+| https://grafana.github.io/helm-charts | promtail | ~6.15.3 |
 
 ## Chart Repo
 
@@ -71,13 +71,17 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | localFileStore.path | string | `"/cordtools-files"` |  |
 | localFileStore.signingKey | string | `"changeme"` |  |
 | localFileStore.volumeSize | string | `"40Gi"` |  |
-| loki.config.chunk_store_config.max_look_back_period | string | `"720h"` |  |
-| loki.config.table_manager.retention_deletes_enabled | bool | `true` |  |
-| loki.config.table_manager.retention_period | string | `"720h"` |  |
+| loki.backend.replicas | int | `1` |  |
+| loki.commonConfig.replication_factor | int | `1` |  |
 | loki.enabled | bool | `true` |  |
-| loki.persistence.enabled | bool | `false` |  |
-| loki.persistence.size | string | `"10Gi"` |  |
+| loki.read.replicas | int | `1` |  |
+| loki.server.http_listen_port | int | `3100` |  |
 | loki.serviceMonitor.enabled | bool | `false` |  |
+| loki.storage.type | string | `"filesystem"` |  |
+| loki.table_manager.retention_deletes_enabled | bool | `true` |  |
+| loki.table_manager.retention_period | string | `"720h"` |  |
+| loki.test.enabled | bool | `false` |  |
+| loki.write.replicas | int | `1` |  |
 | mongodb.auth.database | string | `"cordtools"` |  |
 | mongodb.auth.enabled | bool | `true` |  |
 | mongodb.auth.password | string | `"changeme"` |  |
@@ -149,4 +153,5 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
 | serviceMonitor.enabled | bool | `false` |  |
+| singleBinary.replicas | int | `1` |  |
 | tolerations | list | `[]` |  |

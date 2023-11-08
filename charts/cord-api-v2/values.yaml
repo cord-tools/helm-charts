@@ -149,11 +149,23 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
+# postgresql:
+#   enabled: true
+#   postgresqlDatabase: cordtools
+#   postgresqlUsername: cordtools
+#   postgresttPassword: password
+#   metrics:
+#     enabled: false
+#     serviceMonitor:
+#       enabled: false
+
 postgresql:
   enabled: true
-  postgresqlDatabase: cordtools
-  postgresqlUsername: cordtools
-  postgresqlPassword: password
+  auth:
+    postgresPassword: "changeme"
+    username: "cordtools"
+    password: "changeme"
+    database: "cordtools"
   metrics:
     enabled: false
     serviceMonitor:

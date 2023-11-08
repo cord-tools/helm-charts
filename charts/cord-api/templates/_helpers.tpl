@@ -25,7 +25,7 @@ If release name contains chart name it will be used as a full name.
 {{- end -}}
 
 {{- define "cord-api.loki.fullname" -}}
-{{- printf "%s-%s" .Release.Name "loki" | trunc 63 | trimSuffix "-" -}}
+{{- printf "%s" "loki-gateway" -}}
 {{- end -}}
 
 {{- define "cord-api.mongodb.fullname" -}}
@@ -78,7 +78,7 @@ env:
   {{- if not .Values.config.LOGS_URL }}
   - name: LOGS_URL
     {{- if .Values.loki.enabled }}
-    value: "http://{{ include "cord-api.loki.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.loki.config.server.http_listen_port }}"
+    value: "http://{{ include "cord-api.loki.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.loki.server.http_listen_port }}"
     {{- else }}
     value: ""
     {{- end }}
