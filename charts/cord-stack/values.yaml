@@ -378,6 +378,8 @@ kube-prometheus-stack:
   #   admissionWebhooks:
   #    enabled: false
   prometheus:
+    service:
+      port: 9090
     prometheusSpec:
       retention: 30d
       ruleSelectorNilUsesHelmValues: false
@@ -411,6 +413,7 @@ kube-prometheus-stack:
   #           - send_resolved: true
   #             to: email@domain.tld
   grafana:
+    enabled: true
     adminPassword: "changeme"
     # See https://grafana.com/docs/installation/configuration/
     grafana.ini:
