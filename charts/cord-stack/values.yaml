@@ -138,6 +138,8 @@ cord-api:
         enabled: true
   # Log storage
   loki:
+    server:
+      http_listen_port: 3100
     persistence:
       enabled: true
     serviceMonitor:
