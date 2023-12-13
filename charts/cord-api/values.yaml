@@ -214,7 +214,7 @@ mongodb:
       enabled: false
 
 loki:
-  enabled: true
+  enabled: false
   server:
     http_listen_port: 3100
   commonConfig:
@@ -226,12 +226,22 @@ loki:
   table_manager:
     retention_deletes_enabled: true
     retention_period: 720h
-  backend:
-    replicas: 1
   write:
-    replicas: 1
+    replicas: 2
   read:
+    replicas: 2
+  gateway:
+    enabled: true
     replicas: 1
+  minio:
+    enabled: false
+  monitoring:
+    selfMonitoring:
+      enabled: false
+      grafanaAgent:
+        installOperator: false
+      lokiCanary:
+          enabled: false
   test:
     enabled: false
 singleBinary:

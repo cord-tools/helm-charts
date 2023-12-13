@@ -1,6 +1,6 @@
 # cord-api
 
-![Version: 1.2.10](https://img.shields.io/badge/Version-1.2.10-informational?style=flat-square) ![AppVersion: 1.2.5](https://img.shields.io/badge/AppVersion-1.2.5-informational?style=flat-square)
+![Version: 1.2.11](https://img.shields.io/badge/Version-1.2.11-informational?style=flat-square) ![AppVersion: 1.2.5](https://img.shields.io/badge/AppVersion-1.2.5-informational?style=flat-square)
 
 The API for Cord Tools
 
@@ -71,17 +71,22 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | localFileStore.path | string | `"/cordtools-files"` |  |
 | localFileStore.signingKey | string | `"changeme"` |  |
 | localFileStore.volumeSize | string | `"40Gi"` |  |
-| loki.backend.replicas | int | `1` |  |
 | loki.commonConfig.replication_factor | int | `1` |  |
-| loki.enabled | bool | `true` |  |
-| loki.read.replicas | int | `1` |  |
+| loki.enabled | bool | `false` |  |
+| loki.gateway.enabled | bool | `true` |  |
+| loki.gateway.replicas | int | `1` |  |
+| loki.minio.enabled | bool | `false` |  |
+| loki.monitoring.selfMonitoring.enabled | bool | `false` |  |
+| loki.monitoring.selfMonitoring.grafanaAgent.installOperator | bool | `false` |  |
+| loki.monitoring.selfMonitoring.lokiCanary.enabled | bool | `false` |  |
+| loki.read.replicas | int | `2` |  |
 | loki.server.http_listen_port | int | `3100` |  |
 | loki.serviceMonitor.enabled | bool | `false` |  |
 | loki.storage.type | string | `"filesystem"` |  |
 | loki.table_manager.retention_deletes_enabled | bool | `true` |  |
 | loki.table_manager.retention_period | string | `"720h"` |  |
 | loki.test.enabled | bool | `false` |  |
-| loki.write.replicas | int | `1` |  |
+| loki.write.replicas | int | `2` |  |
 | mongodb.auth.database | string | `"cordtools"` |  |
 | mongodb.auth.enabled | bool | `true` |  |
 | mongodb.auth.password | string | `"changeme"` |  |
