@@ -72,6 +72,7 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | localFileStore.signingKey | string | `"changeme"` |  |
 | localFileStore.volumeSize | string | `"40Gi"` |  |
 | loki.auth_enabled | bool | `false` |  |
+| loki.backend.replicas | int | `1` |  |
 | loki.commonConfig.replication_factor | int | `1` |  |
 | loki.enabled | bool | `true` |  |
 | loki.gateway.enabled | bool | `true` |  |

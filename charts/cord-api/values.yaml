@@ -227,6 +227,8 @@ loki:
   table_manager:
     retention_deletes_enabled: true
     retention_period: 720h
+  backend:
+    replicas: 1
   write:
     replicas: 1
   read:
