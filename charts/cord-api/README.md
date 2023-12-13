@@ -71,8 +71,9 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | localFileStore.path | string | `"/cordtools-files"` |  |
 | localFileStore.signingKey | string | `"changeme"` |  |
 | localFileStore.volumeSize | string | `"40Gi"` |  |
+| loki.auth_enabled | bool | `false` |  |
 | loki.commonConfig.replication_factor | int | `1` |  |
-| loki.enabled | bool | `false` |  |
+| loki.enabled | bool | `true` |  |
 | loki.gateway.enabled | bool | `true` |  |
 | loki.gateway.replicas | int | `1` |  |
 | loki.minio.enabled | bool | `false` |  |

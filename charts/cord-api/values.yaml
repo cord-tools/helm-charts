@@ -214,7 +214,8 @@ mongodb:
       enabled: false
 
 loki:
-  enabled: false
+  enabled: true
+  auth_enabled: false
   server:
     http_listen_port: 3100
   commonConfig:
@@ -241,7 +242,7 @@ loki:
       grafanaAgent:
         installOperator: false
       lokiCanary:
-          enabled: false
+        enabled: false
   test:
     enabled: false
 singleBinary:
