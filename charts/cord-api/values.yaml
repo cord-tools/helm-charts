@@ -228,14 +228,17 @@ loki:
     retention_deletes_enabled: true
     retention_period: 720h
   write:
-    replicas: 2
+    replicas: 1
   read:
-    replicas: 2
+    replicas: 1
+  # Configuration for the gateway
   gateway:
     enabled: true
     replicas: 1
+  # Disable mino installation
   minio:
     enabled: false
+  # Disable self-monitoring
   monitoring:
     selfMonitoring:
       enabled: false
@@ -243,6 +246,7 @@ loki:
         installOperator: false
       lokiCanary:
         enabled: false
+  # Disable helm-test
   test:
     enabled: false
 singleBinary:
