@@ -222,6 +222,9 @@ loki:
     replication_factor: 1
   storage:
     type: 'filesystem'
+  storage_config:
+    filesystem:
+      directory: /tmp/loki/
   serviceMonitor:
     enabled: false
   table_manager:
@@ -246,8 +249,8 @@ loki:
       enabled: false
       grafanaAgent:
         installOperator: false
-      lokiCanary:
-        enabled: false
+    lokiCanary:
+      enabled: false
   # Disable helm-test
   test:
     enabled: false
