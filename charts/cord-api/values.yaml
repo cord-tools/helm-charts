@@ -220,6 +220,17 @@ loki:
     http_listen_port: 3100
   commonConfig:
     replication_factor: 1
+  commonStorageConfig:
+    filesystem:
+      directory: /var/loki/
+  index_gateway:
+    mode: simple
+  ingester:
+    autoforget_unhealthy: true
+  ruler:
+    storage:
+      local:
+        directory: /var/loki/ruler
   storage:
     type: 'filesystem'
   storage_config:
