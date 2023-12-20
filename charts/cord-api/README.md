@@ -78,13 +78,14 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | loki.gateway.enabled | bool | `true` |  |
 | loki.gateway.replicas | int | `1` |  |
 | loki.minio.enabled | bool | `false` |  |
+| loki.monitoring.lokiCanary.enabled | bool | `false` |  |
 | loki.monitoring.selfMonitoring.enabled | bool | `false` |  |
 | loki.monitoring.selfMonitoring.grafanaAgent.installOperator | bool | `false` |  |
-| loki.monitoring.selfMonitoring.lokiCanary.enabled | bool | `false` |  |
 | loki.read.replicas | int | `1` |  |
 | loki.server.http_listen_port | int | `3100` |  |
 | loki.serviceMonitor.enabled | bool | `false` |  |
 | loki.storage.type | string | `"filesystem"` |  |
+| loki.storage_config.filesystem.directory | string | `"/tmp/loki/"` |  |
 | loki.table_manager.retention_deletes_enabled | bool | `true` |  |
 | loki.table_manager.retention_period | string | `"720h"` |  |
 | loki.test.enabled | bool | `false` |  |
