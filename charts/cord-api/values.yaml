@@ -233,9 +233,6 @@ loki:
         directory: /var/loki/ruler
   storage:
     type: 'filesystem'
-  storage_config:
-    filesystem:
-      directory: /tmp/loki/
   serviceMonitor:
     enabled: false
   table_manager:
