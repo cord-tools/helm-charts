@@ -220,11 +220,19 @@ loki:
     http_listen_port: 3100
   commonConfig:
     replication_factor: 1
+  commonStorageConfig:
+    filesystem:
+      directory: /var/loki/
+  index_gateway:
+    mode: simple
+  ingester:
+    autoforget_unhealthy: true
+  ruler:
+    storage:
+      local:
+        directory: /var/loki/ruler
   storage:
     type: 'filesystem'
-  storage_config:
-    filesystem:
-      directory: /tmp/loki/
   serviceMonitor:
     enabled: false
   table_manager:
@@ -236,6 +244,15 @@ loki:
     replicas: 1
   read:
     replicas: 1
+  schema_config:
+    configs:
+    - from: "2022-01-11"
+      index:
+        period: 24h
+        prefix: loki_index_
+      object_store: filesystem
+      schema: v12
+      store: boltdb-shipper
   # Configuration for the gateway
   gateway:
     enabled: true
