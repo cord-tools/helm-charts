@@ -1,7 +1,7 @@
 dependencies:
 - name: cord-api
   repository: https://cord-tools.github.io/helm-charts
-  version: 1.2.12
+  version: 1.2.13
 - name: cord-api-v2
   repository: https://cord-tools.github.io/helm-charts
   version: 1.0.5
@@ -17,5 +17,5 @@ dependencies:
 - name: kube-prometheus-stack
   repository: https://prometheus-community.github.io/helm-charts
   version: 52.1.0
-digest: sha256:cdd4f9594c7acd42b42ebf4be108a627665d0ea8a9b9cedf61dc17320a71cfd1
-generated: "2023-12-20T15:14:48.497489-06:00"
+digest: sha256:906792f4e707e0c48194a99d42ba6fade6d8a003710b313113d1c7f92beec651
+generated: "2024-01-03T11:18:02.655608-06:00"
