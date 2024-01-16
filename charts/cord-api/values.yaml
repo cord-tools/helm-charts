@@ -215,24 +215,20 @@ mongodb:
 
 loki:
   enabled: true
-  auth_enabled: false
+  loki:
+    auth_enabled: false
+    ingester:
+      autoforget_unhealthy: true
+    commonConfig:
+      compactor_address: 'loki-backend'
+      replication_factor: 1
+    storage:
+      type: filesystem
+    index_gateway:
+      mode: simple
+    querySchedulerAddress: query-scheduler-discovery.default.svc.cluster.local.:9095
   server:
     http_listen_port: 3100
-  commonConfig:
-    replication_factor: 1
-  commonStorageConfig:
-    filesystem:
-      directory: /var/loki/
-  index_gateway:
-    mode: simple
-  ingester:
-    autoforget_unhealthy: true
-  ruler:
-    storage:
-      local:
-        directory: /var/loki/ruler
-  storage:
-    type: 'filesystem'
   serviceMonitor:
     enabled: false
   table_manager:
@@ -271,8 +267,8 @@ loki:
   # Disable helm-test
   test:
     enabled: false
-singleBinary:
-  replicas: 1
+  singleBinary:
+    replicas: 1
 
 ######### LOKI OLD CONFIGURATION #########
 # loki:
