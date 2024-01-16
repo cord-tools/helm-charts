@@ -1,6 +1,6 @@
 # cord-api
 
-![Version: 1.2.13](https://img.shields.io/badge/Version-1.2.13-informational?style=flat-square) ![AppVersion: 1.2.5](https://img.shields.io/badge/AppVersion-1.2.5-informational?style=flat-square)
+![Version: 1.2.14](https://img.shields.io/badge/Version-1.2.14-informational?style=flat-square) ![AppVersion: 1.2.5](https://img.shields.io/badge/AppVersion-1.2.5-informational?style=flat-square)
 
 The API for Cord Tools
 
@@ -71,21 +71,22 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | localFileStore.path | string | `"/cordtools-files"` |  |
 | localFileStore.signingKey | string | `"changeme"` |  |
 | localFileStore.volumeSize | string | `"40Gi"` |  |
-| loki.auth_enabled | bool | `false` |  |
 | loki.backend.replicas | int | `1` |  |
-| loki.commonConfig.replication_factor | int | `1` |  |
-| loki.commonStorageConfig.filesystem.directory | string | `"/var/loki/"` |  |
 | loki.enabled | bool | `true` |  |
 | loki.gateway.enabled | bool | `true` |  |
 | loki.gateway.replicas | int | `1` |  |
-| loki.index_gateway.mode | string | `"simple"` |  |
-| loki.ingester.autoforget_unhealthy | bool | `true` |  |
+| loki.loki.auth_enabled | bool | `false` |  |
+| loki.loki.commonConfig.compactor_address | string | `"loki-backend"` |  |
+| loki.loki.commonConfig.replication_factor | int | `1` |  |
+| loki.loki.index_gateway.mode | string | `"simple"` |  |
+| loki.loki.ingester.autoforget_unhealthy | bool | `true` |  |
+| loki.loki.querySchedulerAddress | string | `"query-scheduler-discovery.default.svc.cluster.local.:9095"` |  |
+| loki.loki.storage.type | string | `"filesystem"` |  |
 | loki.minio.enabled | bool | `false` |  |
 | loki.monitoring.lokiCanary.enabled | bool | `false` |  |
 | loki.monitoring.selfMonitoring.enabled | bool | `false` |  |
 | loki.monitoring.selfMonitoring.grafanaAgent.installOperator | bool | `false` |  |
 | loki.read.replicas | int | `1` |  |
-| loki.ruler.storage.local.directory | string | `"/var/loki/ruler"` |  |
 | loki.schema_config.configs[0].from | string | `"2022-01-11"` |  |
 | loki.schema_config.configs[0].index.period | string | `"24h"` |  |
 | loki.schema_config.configs[0].index.prefix | string | `"loki_index_"` |  |
@@ -94,7 +95,7 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | loki.schema_config.configs[0].store | string | `"boltdb-shipper"` |  |
 | loki.server.http_listen_port | int | `3100` |  |
 | loki.serviceMonitor.enabled | bool | `false` |  |
-| loki.storage.type | string | `"filesystem"` |  |
+| loki.singleBinary.replicas | int | `1` |  |
 | loki.table_manager.retention_deletes_enabled | bool | `true` |  |
 | loki.table_manager.retention_period | string | `"720h"` |  |
 | loki.test.enabled | bool | `false` |  |
@@ -170,5 +171,4 @@ helm repo add cord-tools https://cord-tools.github.io/helm-charts
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
 | serviceMonitor.enabled | bool | `false` |  |
-| singleBinary.replicas | int | `1` |  |
 | tolerations | list | `[]` |  |
