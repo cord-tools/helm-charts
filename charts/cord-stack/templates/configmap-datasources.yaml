@@ -15,17 +15,18 @@ data:
     - name: Loki
       type: loki
       uid: loki
-      url: http://{{ include "cord-stack.loki.fullname" . }}:{{ index .Values "cord-api" "loki" "server" "http_listen_port" }}
+      url: http://loki-gateway:80
       access: proxy
       isDefault: true
       version: 1
-      editable: false
+      editable: true
     - name: Prometheus
       type: prometheus
       uid: prometheus
-      url: http://{{ include "cord-stack.name" . }}-kube-prometheus-prometheus:{{ index .Values "kube-prometheus-stack" "prometheus" "service" "port" }}/
+      url: http://{{ include "cord-stack.prometheus.fullname" . }}:{{ index .Values "kube-prometheus-stack" "prometheus" "service" "port" }}
       access: proxy
       isDefault: false
+      editable: true
       jsonData:
         httpMethod: POST
         timeInterval: 30s
