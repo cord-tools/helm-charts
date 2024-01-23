@@ -54,3 +54,7 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- define "cord-stack.loki.fullname" -}}
 {{- printf "%s-%s" .Release.Name "loki" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
+
+{{- define "cord-stack.prometheus.fullname" -}}
+{{- printf "%s-%s" .Release.Name "kube-prometheus-prometheus" | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
